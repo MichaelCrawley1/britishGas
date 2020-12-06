@@ -1,0 +1,16 @@
+<svg id="illustration-protect" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" data-di-res-id="b49e22b3-6eea17fb" data-di-rand="1605360718039">
+    <defs>
+        <linearGradient id="protect-a" x1="27.87" x2="81.3" y1="1043.45" y2="922.95" gradientTransform="translate(0 -916)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#8b0304"></stop>
+            <stop offset="1" stop-color="#ee3124"></stop>
+        </linearGradient>
+        <linearGradient id="protect-b" x1="18.08" x2="85.02" y1="916.98" y2="1032.92" gradientTransform="translate(0 -916)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#8b0304"></stop>
+            <stop offset="1" stop-color="#ee3124"></stop>
+        </linearGradient>
+    </defs>
+    <path fill="url(#protect-a)" d="M68.16 4.8a11.18 11.18 0 00-8.32 0L17.3 22a3.57 3.57 0 00-2.23 3.31v.14c0 1.34 0 32.31 4.69 50.67s17.43 32.45 42.36 47.33a3.5 3.5 0 003.76 0c24.8-15 37.94-29.49 42.36-47.59s4.69-49.34 4.69-50.68a3.55 3.55 0 00-2.24-3.31z"></path>
+    <path fill="url(#protect-b)" d="M59.84 4.8L17.3 22a3.57 3.57 0 00-2.23 3.31v.14c0 1.34 0 32.31 4.69 50.67s17.43 32.45 42.36 47.33A3.46 3.46 0 0064 124V4a11.31 11.31 0 00-4.16.8z"></path>
+    <path fill="#8b0304" d="M62.05 47.39C58.6 43.6 55.11 42 51.26 41.74a12.71 12.71 0 00-13 9.62 15.24 15.24 0 002.1 13C48.38 75.28 59.58 84 61.7 85.58a.54.54 0 00.7 0c2.12-1.6 13.32-10.3 21.39-21.27a15.24 15.24 0 002.1-13 12.7 12.7 0 00-13.06-9.62c-3.83.31-7.33 1.92-10.78 5.7z" opacity=".5"></path>
+    <path fill="#fff" d="M64.05 44.39C60.6 40.6 57.11 39 53.26 38.74a12.71 12.71 0 00-13 9.62 15.24 15.24 0 002.1 13C50.38 72.28 61.58 81 63.7 82.58a.54.54 0 00.7 0c2.12-1.6 13.32-10.3 21.39-21.27a15.24 15.24 0 002.1-13 12.7 12.7 0 00-13.06-9.62c-3.83.31-7.33 1.92-10.78 5.7z"></path>
+</svg>
