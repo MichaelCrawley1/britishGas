@@ -44,4 +44,5 @@ package-lock.json
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,sass
 
-.PostMastardsNotes1.rtfd
+.PostMastardsNotes1.rtfd/*
+
