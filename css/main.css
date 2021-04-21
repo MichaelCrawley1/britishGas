@@ -320,6 +320,40 @@ template {
   font-family: 'BG Flame Bold';
   src: url("../font-bold/BG Flame Bold/BG Flame Bold.ttf") format("truetype"); }
 
+.c-button {
+  background: #b3e000;
+  position: relative;
+  font-family: "BG Flame Regular", sans-serif;
+  font-size: 2rem;
+  padding: .5em 0;
+  border: none;
+  border-radius: 2em;
+  /*	Modifier for British Gas's small green button */ }
+
+.c-button--small {
+  padding: .5em 1.8em 0.5em 2em;
+  /* end of Modifier */ }
+
+.c-button__mobile-size {
+  position: relative;
+  background: linear-gradient(#0099ff -75%, #005eb8 100%);
+  color: #FFFFFF;
+  padding: .812em 1.5em .812em 1.5em;
+  border-top-right-radius: .5em;
+  border-bottom-right-radius: .5em;
+  border-bottom-left-radius: .5em;
+  border: none;
+  line-height: 2.0;
+  font-weight: 700;
+  font-family: "BG Flame Bold", sans-serif;
+  display: inline-block; }
+
+.h-flex-children {
+  display: flex; }
+
+.h-grid-box-margins {
+  margin: 1.5em 1.8em 1.5em 0; }
+
 *, *::before, *::after {
   box-sizing: border-box; }
 
@@ -341,7 +375,7 @@ img {
   display: block;
   height: auto; }
 
-h1, h2, p {
+h1, h2, h3, h5, p {
   margin-top: 0;
   margin-bottom: 1em; }
 
@@ -349,9 +383,17 @@ h1 {
   line-height: 1;
   font-size: 3.2rem; }
 
-.container {
+.l-container {
   margin: 0 auto;
   width: 95%; }
+
+@media (min-width: 97rem) {
+  .l-container__medium-screen {
+    max-width: 85%; } }
+
+@media (min-width: 116rem) {
+  .l-container__big-screen {
+    max-width: 70%; } }
 
 ul {
   list-style: none;
@@ -361,282 +403,551 @@ ul {
 .fa {
   font-size: 2.2rem; }
 
-.header {
+.c-header {
   display: block;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   background: #FFFFFF;
-  z-index: 2;
+  z-index: 5;
   height: 11.5rem;
+  /* remember height on the section is 11.5rem before the my account mobile drop down comes down. */
   overflow: hidden;
   border: 1px solid #e7e7e7;
-  transition: height linear 300ms; }
+  /* at 752 pixels screen size, the height of the header has to be extended,
+	   to incorporate the
+	   the bigger nav options and their subsequent drop-down menus */ }
+  @media (min-width: 47rem) {
+    .c-header {
+      padding-bottom: .5em;
+      overflow: visible;
+      height: 15.5rem; } }
 
-.top-list {
+.c-header__mini-nav {
   background: #eeeeee;
   text-transform: capitalize;
   font-size: 1.2rem;
   font-family: "BG Flame Bold", sans-serif; }
-  .top-list::after {
-    content: '';
-    display: table;
-    clear: both; }
 
-.background-white {
-  background: #FFFFFF;
-  float: left;
+.c-header__mini-nav-list-item {
   padding: 1em .5em; }
 
-.item-2 {
-  padding: 1em .5em;
-  float: left; }
+/* as this modifier suggests, just a background colour change to the other list item.  This gives
+	the illusion that the colour white is part of the c-header background.  */
+.c-header__mini-nav-list-item--bg-color-change {
+  background: #FFFFFF; }
 
-.under-top {
+/* 	as explained in the html page this class is the flex parent for
+   	both the mobile nav and the desktop nav, at screen sizes 752px the
+   	'my account' and 'menu' mobile nav will be replaced by the
+    ul nav list of the desktop nav options. */
+.c-header__mobile-nav {
   font-size: 1.2rem;
-  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   font-family: "BG Flame Bold", sans-serif;
   margin-top: 1em; }
-  .under-top div {
-    align-self: flex-start;
-    flex: 0 1 auto;
-    padding: 0 .5em;
-    text-align: center; }
-    .under-top div:first-of-type {
-      flex: 1 1 auto; }
-    .under-top div:nth-child(2), .under-top div:nth-child(3) {
-      padding: 0 1em; }
 
-.nav-menu-after-click {
+.c-header__mobile-nav-logo {
+  /*	at mobile screen sizes this is to create an end to end distance between the logo and the
+		the mobile nav options */
+  flex: 1 1 auto;
+  padding: 0em .5em; }
+  @media (min-width: 47rem) {
+    .c-header__mobile-nav-logo {
+      padding: 1em .5em; } }
+  @media (min-width: 114rem) {
+    .c-header__mobile-nav-logo {
+      /*		the flex growth changes here to bring the distance closer between the logo and the desktop
+				options, because at large screen sizes the distance far apart is noticeable.  It will be apparent
+				that the growth has gone up here, which might lead one to think that the distance will be further.
+				However, the desktop nav options have their own flex growth of one, bringing them closer together,
+				while still keeping a distance that looks presentable on screen. */
+      flex: 2 1 auto; } }
+
+.c-header__mobile-nav-img {
+  width: 8.5rem;
+  height: 5.7rem;
+  margin-top: -.5em;
+  /* at desktop screen sizes this width change on the logo image was to make the British Gas log appear
+	   larger to take advantage of the larger screen real estate  */ }
+  @media (min-width: 47rem) {
+    .c-header__mobile-nav-img {
+      width: 15.5rem;
+      margin-left: -.5em; } }
+
+.c-js-header__mobile-nav-my-account {
   display: block;
   cursor: pointer;
   background: none;
-  color: initial; }
+  color: initial;
+  padding: 0 1em;
+  flex: 0 1 auto;
+  text-align: center;
+  /* this links to the comments mentioned with the flex parent, 'c-header__mobile-nav' at the top of this page
+  	 	and the html page., this takes out the mobile options of clicking my account and menu to make way for
+   		the desktop nav options.  c-header__mobile-nav is both the parent of these mobile options and the desktop by
+   		simply taking away the mobile options at the required screen size  */ }
+  @media (min-width: 47rem) {
+    .c-js-header__mobile-nav-my-account {
+      display: none; } }
 
-.menu-pointer {
-  cursor: pointer; }
-
-.logo {
-  width: 8.5rem;
-  height: 5.7rem;
-  margin-top: -.5em; }
-
-.icons {
+.c-header__mobile-nav-icons {
   font-size: 2.2rem; }
 
-.covid-section {
-  margin-top: 7.2em;
-  background: #333f48;
-  color: #FFFFFF;
-  padding: 1em .2em 1em;
-  height: auto;
-  overflow: hidden;
-  cursor: pointer; }
+.c-js-header__mobile-nav-menu {
+  cursor: pointer;
+  padding: 0 1em;
+  flex: 0 1 auto;
+  text-align: center;
+  /* this links to the comments mentioned with the flex parent, 'c-header__nav' at the top of this page
+   		and the html page., this takes out the mobile options of clicking my account and menu to make way for
+   		the desktop nav options.  C-header nav is both the parent of these mobile options and the desktop by
+   			simply taking away the mobile options at the required screen size */ }
+  @media (min-width: 47rem) {
+    .c-js-header__mobile-nav-menu {
+      display: none; } }
 
-.covid-info {
-  display: flex;
+/* this is the big screen nav, it comes in at 752 px, like mentioned in the html document,
+		it is a child of the flex parent of, 'c-header__mobile-nav' while being the flex parent for the
+		desktop nav menu options, the display none, is to let the mobile nav options take precedence,
+		the display flex at 752 px screen size is to take precedence over the mobile options */
+.c-header__big-nav {
+  display: none;
+  /*	the below media query links the the British gas logo, it shortens the distance at 1824px
+		but also giving more growth to the British gas logo */ }
+  @media (min-width: 47rem) {
+    .c-header__big-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      font-size: 1.6rem;
+      font-family: "BG Flame Bold", sans-serif;
+      margin-top: 2em; } }
+  @media (min-width: 114rem) {
+    .c-header__big-nav {
+      flex: 1 1 auto; } }
+
+.c-header__big-nav-list {
+  display: block;
+  padding: 1em .5em; }
+  .c-header__big-nav-list:hover, .c-header__big-nav-list:focus {
+    background: #005eb8;
+    color: #FFFFFF; }
+    .c-header__big-nav-list:hover .c-header__big-nav-drop-down--collapse-menu, .c-header__big-nav-list:focus .c-header__big-nav-drop-down--collapse-menu {
+      height: auto;
+      overflow: visible; }
+  @media (min-width: 50.4375rem) {
+    .c-header__big-nav-list {
+      padding: 1em 1em;
+      /*	big nav drop down menu here, it is position absolute taken its nearest position ancestor
+			the 'c-header' element, which is a position fixed.  Since fixed goes with the html element,
+			by doing position absolute with the big nav drop down we get access to whole width of the
+			screen which is what we want.  There is negative measurements to take out the space that
+			was occupied by the c-header's borders. */ } }
+
+.c-header__big-nav-drop-down {
+  background: #005eb8;
+  color: #FFFFFF;
+  position: absolute;
+  top: 8.9em;
+  left: -0.2em;
+  right: -0.2em;
+  /* modifier for the big nav element to collapse and extend its height on hover the
+		'c-header__big-nav-list' */ }
+
+.c-header__big-nav-drop-down--collapse-menu {
+  height: 0;
+  overflow: hidden;
+  /* end of modifier */ }
+
+/* this enables when it is screen size to do two columns that they center, to take up
+	the screen real estate available */
+.c-header__big-nav-drop-down-flex-children-properties {
+  justify-content: center; }
+
+.c-header__big-nav-flex-item-properties {
+  margin: 1.5em 1.8em 1.5em 0;
+  padding-top: 1em;
+  padding-right: 3em;
+  padding-left: .5em; }
+  @media (min-width: 80rem) {
+    .c-header__big-nav-flex-item-properties {
+      padding-right: 0;
+      padding-left: 0; } }
+
+/* modifier to add a border on the columns after the first column, in other words the subsequent
+	columns after the first have a border to them */
+.c-header__big-nav-flex-item-properties--border-left {
+  border-left: 1px solid #09f;
+  margin-left: 3em;
+  padding-left: 1.5em;
+  /* end of modifier */ }
+
+/* modifier to bring in the third flex column on a larger screen size as it will not fit on smaller
+   screens  */
+.c-header__big-nav-flex-item-properties--very-large-screen {
+  display: none;
+  /* it has a grow on flex to mirror the design for the original British gas site giving it seemly more space
+			that the first two columns. */ }
+  @media (min-width: 80rem) {
+    .c-header__big-nav-flex-item-properties--very-large-screen {
+      display: block;
+      flex: 1 1 auto;
+      border-left: 1px solid #09f;
+      padding-left: 1.5em;
+      /* end of modifier */ } }
+
+/* this modifier ties in with the grid column experiment where the,
+	'c-header__big-nav-drop-down-grid-box-two--experiment' acts as the container parent to access the
+	whole container so we can do flex-direction: column in the child (the parent of the flex item
+	elements) */
+.c-header__big-nav-drop-down-title-block--flex-parent-direction-column {
+  flex-direction: column;
+  justify-content: space-between;
+  /* end of modifier */ }
+
+.c-header__big-nav-drop-down-title {
+  font-family: "BG Flame Bold", sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.5em;
+  margin-left: .2em; }
+
+.c-header__big-nav-drop-down-title-content {
+  margin-left: .5em;
+  margin-bottom: .5em;
+  font-family: "BG Flame Regular", sans-serif; }
+
+/* modifier for the one of the unordered lists to have no margin bottom */
+.c-header__big-nav-drop-down-title-content--margin-bottom {
+  margin-bottom: 0; }
+
+/*end of modifier*/
+.c-header__big-nav-drop-down-list-arrow {
+  margin-right: 1em; }
+
+.c-header__big-nav-drop-down-cta-title {
+  font-family: "BG Flame Regular", sans-serif; }
+
+/* BELOW IS THE C-HEADER__BIG-NAV-DROP-DOWN-CONTAINER MODIFIERS */
+/* this class was usually modified when it was wanting to flex items underneath it (children) */
+/* this was a modifier as a parent to the text and image as flex items, this made sure the two items
+    became nearer the heading element inside the column  */
+@media (min-width: 78rem) {
+  .c-header__big-nav-drop-down-container--flex-parent {
+    margin-top: -3em; } }
+
+/* end of modifier */
+/* this was the container of the heading that was above (not a parent) of the above modifier, this
+	modifier was just to give the appearance that the heading had a line break */
+@media (min-width: 67rem) {
+  .c-header__big-nav-drop-down-container--narrow-width {
+    width: 50%; } }
+
+/* end of modifier */
+/*	 this modifier was just to swap the order of the buttons as i discovered i had them in the wrong
+	order as per design of the original British gas site */
+.c-header__big-nav-drop-down-container--flex-reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  flex-wrap: wrap; }
+
+/* end of the modifier */
+/* because of the above modifier, the row reverse made the buttons too close to each other, this
+	modifier just separated them */
+.c-header__big-nav-drop-down-container--button-padding {
+  padding-right: 1em; }
+
+/* end of modifier */
+/* this item was side by side with the image, to get it to match the British Gas Design I had to
+	move it down a little, so when the parent container is flex-direction: row you can use align-
+	self to move it down, almost as if the align self is on its own flex-direction: column. */
+.c-header__big-nav-drop-down-container--flex-grow {
+  align-self: flex-end; }
+  @media (min-width: 86rem) {
+    .c-header__big-nav-drop-down-container--flex-grow {
+      align-self: center;
+      padding-right: 1em; } }
+
+/*	end of modifier */
+/*	simple modifier here, just trying to bring the long button underneath the text and the British Gas
+	image up a little */
+.c-header__big-nav-drop-down-container--c-button-parent-flex-stretch {
+  margin-top: 1em; }
+
+/* end of modifier */
+/* END OF THE C-HEADER__BIG-NAV-DROP-DOWN-CONTAINER MODIFIERS */
+.c-header__big-nav-drop-down-c-button-parent {
+  padding-right: 9em;
+  align-self: center; }
+
+.c-header__big-nav-drop-down-title-content-item--margin-change {
+  margin-top: 1em; }
+
+/* 	the !important is to override the font awesome cdn stylesheet, gone with this because i haven't
+	found another way to manipulate the styling from the font-awesome styles  */
+.c-header__big-nav-drop-down-arrow-right {
+  font-size: 2.8rem !important;
+  margin-right: .3em;
+  vertical-align: -12%;
+  line-height: 0.75em !important;
+  /* end of font awesome modification */ }
+
+.c-header__big-nav-drop-down-image-parent {
+  margin-top: -4em; }
+
+/* this works out below, but really i didn't need this */
+.c-header__big-nav-drop-down-cta-img {
+  max-width: 90%; }
+
+.c-header__big-nav-drop-down-cta-img--move-margin {
+  /*  ||trying the second drop down menu with display grid || */
+  /*  || GRID HERE AND ALL THEIR COLUMNS WITH MODIFIERS || */ }
+
+.c-header__big-nav-drop-down-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* at screen size 1200 we can fit in the 4th column */ }
+  @media (min-width: 75rem) {
+    .c-header__big-nav-drop-down-grid {
+      grid-template-columns: repeat(4, 1fr);
+      /* the grid modifiers below, allows the grid to be displayed differently for each desktop drop down menu,
+			to match the design spec */ } }
+
+.c-header__big-nav-drop-down-grid--second-one {
+  grid-template-columns: repeat(2, 1fr);
+  /*	I thought the modifier classes would need repeat overrides to override the element class's media
+		queries but no, the modifiers take precedence even before the element's media queries changes
+		in other words, you can just focus on the media queries to the modifiers individually, without
+		worrying what the element classes are doing, however I think if you don't have a media query then
+		it will use the first class's media query. Nope just did an experiement, this class one even
+		without a meida query. Now that I think about it, it might be the order of the css! */ }
+  @media (min-width: 69.3125rem) {
+    .c-header__big-nav-drop-down-grid--second-one {
+      grid-template-columns: repeat(3, 1fr); } }
+
+.c-header__big-nav-drop-down-grid--third-one {
+  grid-template-columns: repeat(3, 1fr);
+  /* THIS ENDS THE THE THREE GRID DESIGNS FOR THE DROP DOWN MENUS */
+  /* NOW ON TO THE GRID COLUMN BOXES */
+  /* the grid boxes are the individual columns of the grid, hence some need amendments to meet the
+		content of the site.   In that regard because flex is content driven, some of the designs of the
+		individual grid columns are also a flex parent or item which see at the classes below. */
+  /*	The naming convention that developed organically is that grid box stands for grid column one,
+	 	grid box two and stand for grid column three, etc, that is now being changed.  To keep a central class
+	 	for all grid columns was overkill because each column was getting its own modifier, it ended up
+	 	leading to unnecessary classes.  The new way of doing the grid columns was to make the element
+	 	classes, 'c-header__big-nav-drop-down-grid-box-one, two, three four etc'  This meant that for
+	 	each new grid design if any column needed to be modified, we modified on the number of column
+	 	it was on, much easier to follow that way.  There is a helper class here of inner grid boxes
+	 	margins because it was deemed a lot of the grid columns where using the same margins. */ }
+
+.c-header__big-nav-drop-down-grid-box-one {
+  border-right: 1px solid #09f;
+  /* modifier for another drop down grids first column */ }
+
+.c-header__big-nav-drop-down-grid-box-one--flex-parent {
+  justify-content: center; }
+  @media (min-width: 69.3125rem) {
+    .c-header__big-nav-drop-down-grid-box-one--flex-parent {
+      justify-content: flex-start; } }
+
+/*	end of modifier for the first grid column per grid */
+.c-header__big-nav-drop-down-grid-box-two {
+  margin: 1.5em 1.8em 1.5em 0.8em;
+  border-right: 1px solid #09f; }
+  @media (min-width: 49.1875rem) {
+    .c-header__big-nav-drop-down-grid-box-two {
+      margin: 1.5em 1.8em 1.5em 0; } }
+
+/* modifier for column two depending what grid it is, one wants to start at text-align center, then
+	when it gets to bigger screens go back to the left. */
+.c-header__big-nav-drop-down-grid-box-two--flex-parent {
+  justify-content: center;
+  border-right: none; }
+  @media (min-width: 69.3125rem) {
+    .c-header__big-nav-drop-down-grid-box-two--flex-parent {
+      justify-content: flex-start;
+      border-right: 1px solid #09f; } }
+
+/*  this modifier follows on from the html description of getting the, 'justify-content: space-between'
+	to work when it is flex direction: column.  This alone will not give the desired effect.
+	there are two solutions to get the space from a flex-direction: column.  One way is you find out the actual
+	height of the whole container in the computed section in the Google Dev tools and you then put in that
+	explicit height in the class below.  You can see i have not gone with that solution, reason being it will not
+	flex when the screen gets tighter because it is an explicit height.  To remedy that, we access the parent
+	of, 'c-header__big-nav-drop-down-title-block--flex-parent-direction-column' which is displayed below.  While
+	the below class has no properties to speak off, the class is a display flex from the helper class we have.
+	we do not need to put in flex-direction: row because that is the default, but to make the comments to resonate
+	with whoever reads them, should give the details of why i did what i did, now with this solution it gives
+	access to the whole height of the div and it will flex when the screen gets smaller.  Win, win.  */
+.c-header__big-nav-drop-down-grid-box-two--experiment {
   flex-direction: row; }
 
-.column-paragraphs {
-  flex: 1 1 auto; }
-  .column-paragraphs p {
-    margin: 0 auto;
-    padding: .5em .5em 0;
-    width: 90%; }
+/* end of modifier for grid column two */
+.c-header__big-nav-drop-down-grid-box-three {
+  border-right: none; }
+  @media (min-width: 75rem) {
+    .c-header__big-nav-drop-down-grid-box-three {
+      border-right: 1px solid #09f; } }
 
-.toggle-par {
+/* modifier for grid column three depending what grid it is */
+.c-header__big-nav-drop-down-grid-box-three--media-query-changes {
   display: none; }
+  @media (min-width: 69.3125rem) {
+    .c-header__big-nav-drop-down-grid-box-three--media-query-changes {
+      display: block; } }
+  @media (min-width: 75rem) {
+    .c-header__big-nav-drop-down-grid-box-three--media-query-changes {
+      border-right: none; } }
 
-.covid-section-link-style {
-  color: #FFFFFF;
-  font-family: "BG Flame Bold", sans-serif; }
+@media (min-width: 75rem) {
+  .c-header__big-nav-drop-down-grid-box-three--no-borders {
+    border-right: none; } }
 
-.icon-left {
-  width: 2em;
-  height: 2em;
-  flex: 0 1 auto; }
-
-.icon-right {
-  width: 2em;
-  height: 2em;
-  flex: 0 1 auto; }
-
-.icon-right-on-click {
-  width: 2em;
-  height: 2em;
-  flex: 0 1 auto;
+/* end of modifiers for the grid column three */
+/* no modifiers for grid column 4 as of yet */
+.c-header__big-nav-drop-down-grid-box-four {
+  border-right: none;
   display: none; }
+  @media (min-width: 75rem) {
+    .c-header__big-nav-drop-down-grid-box-four {
+      display: block; } }
 
-.covid-section-dropdown {
-  height: auto; }
-  .covid-section-dropdown .toggle-par {
-    display: block; }
-  .covid-section-dropdown .icon-right-on-click {
-    display: block; }
-  .covid-section-dropdown .icon-right {
-    display: none; }
+/* yeah this element is a stand alone element, to get the two lists to appear side by side */
+.c-header__big-nav-drop-down-title-content-items-flex-right {
+  padding-right: 1em;
+  padding-left: 3em;
+  margin-top: 2.3em; }
 
-.imageContainer {
-  background-image: url(../img/gasManBackground.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding-bottom: 42%; }
-
-.bottom-decoration {
-  transform: translateY(222%);
-  background-image: url(../img/underneathBsckground.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding-top: 20%; }
-
-.extraPadding {
-  padding: 0 .5em; }
-
-.gasSecondHeading {
-  font-size: 1.9rem;
-  margin: 1em 0;
-  font-family: "BG Flame Bold", sans-serif; }
-
-.gasFirstHeading {
-  font-weight: 100;
+/* end of this element */
+/* below is the last drop down grid and the last grid column where the two buttons have been
+	reversed, this is just the text following the proper font size and non bold */
+.c-header__big-nav-drop-down-cta-desc {
+  font-size: 2.2rem;
   font-family: "BG Flame Regular", sans-serif; }
-  .gasFirstHeading span {
-    font-family: "BG Flame Bold", sans-serif; }
 
-.promptMessage {
-  font-size: 2rem; }
-  .promptMessage span {
-    position: relative;
-    display: inline;
-    background: #005eb8;
-    color: #FFFFFF;
-    vertical-align: top;
-    font-family: "BG Flame Bold", sans-serif;
-    font-size: 1.28rem;
-    padding: 0 .3em;
-    border-radius: .18em; }
-
-.mobile-size {
-  position: relative;
-  background: linear-gradient(#0099ff -75%, #005eb8 100%);
+/* end of this element */
+/* below is not a component button, but a button that just belongs to the header section, because it
+	is never repeated */
+.c-header__big-nav-drop-down-button-style {
+  background: #005eb8;
   color: #FFFFFF;
-  padding: .812em 1.5em .812em 1.5em;
-  border-top-right-radius: .5em;
-  border-bottom-right-radius: .5em;
-  border-bottom-left-radius: .5em;
-  border: none;
-  line-height: 2.0;
-  font-weight: 700;
-  font-family: "BG Flame Bold", sans-serif;
-  display: inline-block; }
+  border: 2px solid #FFFFFF;
+  padding: .38em 1.3em 0.4em 1.6em;
+  line-height: 1.15;
+  margin-top: 1em; }
+  @media (min-width: 67.75rem) {
+    .c-header__big-nav-drop-down-button-style {
+      margin-top: 0; } }
 
-.cta {
-  font-size: 1.6rem;
-  font-family: "BG Flame Bold", sans-serif;
-  text-decoration: none;
-  color: #FFFFFF;
-  display: inline-block; }
-  .cta:hover, .cta:focus {
-    color: #d9d9d9; }
-  .cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0; }
-
-.arrow-right {
-  display: inline-block;
-  margin-left: 1em; }
-
-.arrow-pointing-right {
-  width: 2em;
-  height: 2em;
-  vertical-align: bottom; }
-
-.drop-down-my-account {
+/* end of the drop-down's own button design. */
+.c-header__mobile-nav-drop-down-my-account {
   background: #005eb8;
   color: #FFFFFF;
   padding-top: 4em;
   padding-left: .5em;
   padding-right: .5em;
   border-bottom: solid 1px #005eb8;
-  border-top: solid 1px #005eb8; }
+  border-top: solid 1px #005eb8;
+  /* this is when the mobile drop down is replaced by the desktop */ }
+  @media (min-width: 47rem) {
+    .c-header__mobile-nav-drop-down-my-account {
+      display: none; } }
 
-.stretch {
-  display: flex;
+.c-header__mobile-nav-drop-down-my-account-title {
+  /* below is the my account mobile drop down containers, which could hold things
+		like flex items */ }
+
+.c-header__mobile-nav-drop-down-my-account-container-flex-item-properties {
   align-items: stretch;
   flex-direction: column;
   margin-bottom: 1em;
   margin-left: -.5em;
-  margin-right: -.5em; }
+  margin-right: -.5em;
+  /* end of mobile containers */ }
 
-.green-button {
-  background: #b3e000;
-  position: relative;
-  font-family: "BG Flame Regular", sans-serif;
-  font-size: 2rem;
-  padding: .5em 0;
-  border: none;
-  border-radius: 2em; }
-  .green-button .fa {
-    margin-right: .5em;
-    font-size: 2.2rem; }
-  .green-button a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0; }
+.c-header__mobile-nav-drop-down-my-account-arrow-right {
+  margin-right: .5em;
+  font-size: 2.2rem; }
 
-.unordered-heading {
+/* the below technique I learned from the BBC website, this gives the option of doing your links
+	after the button tags in the html markup rather than wrapping the button tags in links.
+	The usual way to do it is do position: relative on the parent container (which in this case
+	is the button, this is in the button section with sass). Then you do position absolute
+	in the pseudo before element with the link tags, and with top to bottom of 0 you get access to
+	the whole parent container, meaning that the user can click anywhere on the button and it will
+	work . */
+.c-header__mobile-nav-drop-down-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+/* end of BBC technique */
+.c-header__mobile-nav-drop-down-my-account-list-title {
+  font-family: "BG Flame Bold", sans-serif;
+  margin-bottom: 0.5em;
+  margin-top: 1.5em; }
+
+.c-header__mobile-nav-drop-down-list {
   font-family: "BG Flame Bold", sans-serif;
   font-size: 1.8rem;
   display: inline-block;
   margin: .5em 0em; }
 
-.quick-links:last-child {
-  padding-bottom: 1em; }
-  .quick-links:last-child li {
-    margin-left: .5em; }
-    .quick-links:last-child li .list-arrow {
-      margin-right: .4em;
-      font-size: 2.2rem; }
+.c-header__mobile-nav-drop-down-my-account-list-item {
+  margin-left: .5em;
+  /* this modifier just gives more padding on the last child of the list items, to make
+		the container of which the list is in not to look so crammed */ }
 
-.toggle-header .header {
-  height: 61rem;
-  transition: height linear 300ms; }
+.c-header__mobile-nav-drop-down-my-account-list-item--padding-change {
+  padding-bottom: 1em;
+  /* end of modifier */
+  /* this is to move the font awesome arrow more to the right and I had to !important
+		because this is the only way thus far i have found to overwrite font-awesome style-sheet CDN */ }
+
+.c-header__mobile-nav-drop-down-my-account-list-arrow {
+  margin-right: .4em;
+  font-size: 2.2rem !important;
+  /* end of font awesome arrow changes */
+  /* below is the class that gets put on the body tag (given access to the whole document design)
+		 with the JavaScript file when a user clicks on the my account logo.  Doing it this way
+		 keeps the javascript code short and it lets the css design change (with c-header's height)
+		 and then go back to normal every time the user clicks on the button */ }
+
+.toggle-header .c-header {
+  height: 61rem; }
   @media (min-width: 35.7rem) {
-    .toggle-header .header {
+    .toggle-header .c-header {
       height: 57rem; } }
 
-.toggle-header .nav-menu-after-click {
+.toggle-header .c-js-header__mobile-nav-my-account {
   background: #005eb8;
   color: #FFFFFF; }
 
 .toggle-header .covid-section-dropdown {
   pointer-events: none; }
 
-.menu-drop-down {
+/* 	end of manipulating the body tag on click */
+/* did position fixed, to take it out of the document flow as per comments in the html document,
+	position: fixed always aligns with the position of the html element, width of 100 vw
+	to give access to the whole document width.  Could do the same thing with top, bottom,
+	left, right of 0. */
+.c-js-header__mobile-nav-drop-down-menu {
   position: fixed;
   background: #005eb8;
-  z-index: 10;
+  z-index: 2;
   color: #FFFFFF;
-  display: block;
   width: 100vw;
   height: 0;
-  overflow: hidden;
-  transition: height linear 300ms; }
+  overflow: hidden; }
 
-.menu-drop-down-larger-font {
-  display: flex;
+/* get the list items stacked on one another with flex-direction: column */
+.c-js-header__mobile-nav-drop-down-menu-list {
   flex-direction: column;
   font-size: 2.2rem;
   font-family: "BG Flame Regular", sans-serif;
@@ -644,30 +955,250 @@ ul {
   line-height: 28px;
   margin: 0;
   padding: .5em 0; }
-  .menu-drop-down-larger-font li {
-    padding: .455em;
-    margin-right: 3em; }
-    .menu-drop-down-larger-font li:hover {
-      background: #09F; }
 
-.toggle-menu .menu-drop-down {
+.c-js-header__mobile-nav-drop-down-menu-list-item {
+  padding: .455em;
+  margin-right: 3em;
+  /*	goes a lighter blue when we hover on the list items */
+  /* 	 below is the class that gets put on the body tag (given access to the whole document design)
+		 with the JavaScript file when a user clicks on the mobile menu logo.  Doing it this way
+		 keeps the javascript code short and it lets the css design change and then go back to
+		 normal every time the user clicks on the button.  This time height is provided instead of the
+		 c-header class it is the c-js-header__mobile-nav-drop-down-menu */ }
+  .c-js-header__mobile-nav-drop-down-menu-list-item:hover {
+    background: #09F; }
+
+.toggle-menu .c-header {
+  border-bottom: none; }
+
+.toggle-menu .c-js-header__mobile-nav-drop-down-menu {
   position: fixed;
   background: #005eb8;
-  z-index: 10;
+  z-index: 2;
   color: #FFFFFF;
-  display: block;
   width: 100vw;
   margin-top: -.2em;
   border-top: solid 1px #005eb8;
   border-left: solid 1px #005eb8;
   border-right: solid 1px #005eb8;
   border-bottom: 1px solid #e7e7e7;
-  height: 26.4rem;
-  transition: height linear 300ms; }
+  height: 26.4rem; }
 
-.toggle-menu .menu-pointer {
+.toggle-menu .c-js-header__mobile-nav-menu {
   background: #005eb8;
   color: #FFFFFF; }
 
 .toggle-menu .covid-section-dropdown {
   pointer-events: none; }
+
+/* end of manipulating the body tag when a user clicks on the mobile menu option */
+.c-js-covid__warning-section {
+  margin-top: 7.2em;
+  background: #333f48;
+  color: #FFFFFF;
+  padding: 1em .2em 1em;
+  height: auto;
+  overflow: hidden;
+  cursor: pointer; }
+  @media (min-width: 47.125rem) {
+    .c-js-covid__warning-section {
+      margin-top: 9.5em; } }
+
+.c-covid__info {
+  flex-direction: row; }
+
+/*	this modifier keeps a distance from the paragraph and the right icon, but no so much of a
+	distance that it makes the design look like that the space hasn't been utilized.  This is due
+	to the paragraph having a flex grow of 2, it seems to work quite well */
+.c-covid__icon-container--flex-grow {
+  flex: 1 1 auto; }
+
+/*	end of modifier */
+.c-covid__icon-left {
+  width: 2em;
+  height: 2em; }
+
+.c-covid__paragraphs-container {
+  flex: 2 1 auto; }
+
+.c-covid__paragraphs {
+  margin: 0 auto;
+  padding: .5em .5em 0;
+  width: 90%; }
+
+.c-covid__toggle-paragraphs-container {
+  display: none; }
+
+.c-covid__link {
+  color: #FFFFFF;
+  font-family: "BG Flame Bold", sans-serif; }
+
+.c-covid__icon-right {
+  width: 2em;
+  height: 2em;
+  flex: 0 1 auto; }
+
+.c-covid__icon-right-on-click {
+  width: 2em;
+  height: 2em;
+  flex: 0 1 auto;
+  display: none; }
+
+.c-js-covid__section-dropdown .c-covid__toggle-paragraphs-container {
+  display: block; }
+
+.c-js-covid__section-dropdown .c-covid__icon-right-on-click {
+  display: block; }
+
+.c-js-covid__section-dropdown .c-covid__icon-right {
+  display: none; }
+
+/* this class establishes the grid that can be manipulated at different screen sizes */
+.c-hero__with-grid {
+  display: grid;
+  grid-template-columns: 5% repeat(2, 1fr) 5%;
+  row-gap: 40px; }
+  @media (min-width: 56.625rem) {
+    .c-hero__with-grid {
+      row-gap: 0px; } }
+
+/* this class holds the British gas image and the way the html is done the decoration
+	 is wrapped inside it */
+.c-hero__image-container {
+  max-height: 50vh;
+  grid-column: 1 / -1;
+  background-image: url(../img/gasManBackground.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 42%; }
+
+/* the bottom declaration class is inside the c-hero__image-container class in the html, this saves from
+	doing position absolute  */
+.c-hero__bottom-decoration {
+  transform: translateY(221.7%);
+  background-image: url(../img/underneathBsckground.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: 20%;
+  /* for some reason the height of the decoration  has to be manipulated when the grid changes
+		, hence the min-height property. */ }
+  @media (min-width: 56.625rem) {
+    .c-hero__bottom-decoration {
+      transform: translateY(122%);
+      min-height: 23.7vh; } }
+
+/* these two classes are essential when manipulating the grid!!  This is called, 'overlapping', you have to
+	explicitly tell the grid that you want the two elements to occupy the same space otherwise it will
+	stack them on top like a display:block kind of thing */
+@media (min-width: 56.625rem) {
+  .c-hero__image-container, .c-hero__text-container {
+    grid-row: 1 / 2; } }
+
+.c-hero__text-container {
+  grid-column: 1 / -1;
+  padding: 2em; }
+  @media (min-width: 56.625rem) {
+    .c-hero__text-container {
+      grid-column: 1 / 3;
+      background: white;
+      align-self: start;
+      margin-top: 3em;
+      border-radius: 1.5em 1.5em 1.5em 0;
+      position: relative;
+      z-index: 3;
+      /* perfect box-shadow low shadow effect */
+      box-shadow: 0 0.75em 3em 0 rgba(51, 51, 51, 0.15); } }
+  @media (min-width: 68.75rem) {
+    .c-hero__text-container {
+      grid-column: 2 / 3; } }
+
+/* the block of classes down below are just classes that change the font size at different screen
+	sizes and are mostly concerned with how the text style appears on screen, pretty self-explanatory
+	css */
+.c-hero__gas-second-heading {
+  font-size: 1.9rem;
+  margin: 1em 0;
+  font-family: "BG Flame Bold", sans-serif; }
+  @media (min-width: 56.625rem) {
+    .c-hero__gas-second-heading {
+      font-size: 2.1rem; } }
+  @media (min-width: 102.0625rem) {
+    .c-hero__gas-second-heading {
+      font-size: 2.2368rem; } }
+
+.c-hero__gas-first-heading {
+  font-weight: 100;
+  font-family: "BG Flame Regular", sans-serif;
+  font-size: 3.24rem;
+  letter-spacing: -0.01625em;
+  line-height: 1.15; }
+  @media (min-width: 56.625rem) {
+    .c-hero__gas-first-heading {
+      font-size: 4.7rem; } }
+  @media (min-width: 102.0625rem) {
+    .c-hero__gas-first-heading {
+      font-size: 6.104rem; } }
+
+.c-hero__bold {
+  font-family: "BG Flame Bold", sans-serif; }
+
+.c-hero__prompt-message {
+  font-size: 2rem;
+  font-family: "BG Flame Regular", sans-serif;
+  letter-spacing: -0.01625em;
+  line-height: 1.3; }
+  @media (min-width: 56.625rem) {
+    .c-hero__prompt-message {
+      font-size: 2.3rem; } }
+  @media (min-width: 102.0625rem) {
+    .c-hero__prompt-message {
+      font-size: 2.5rem; } }
+
+.c-hero__prompt-message-link {
+  font-family: "BG Flame Bold", sans-serif;
+  font-weight: 400;
+  -webkit-text-decoration: underline #005eb8;
+          text-decoration: underline #005eb8;
+  color: #005eb8; }
+
+.c-hero__footnote {
+  position: relative;
+  display: inline;
+  background: #005eb8;
+  color: #FFFFFF;
+  vertical-align: top;
+  font-family: "BG Flame Bold", sans-serif;
+  font-size: 1.28rem;
+  padding: 0 .3em;
+  border-radius: .18em; }
+
+.c-hero__cta {
+  font-size: 1.6rem;
+  font-family: "BG Flame Bold", sans-serif;
+  text-decoration: none;
+  color: #FFFFFF; }
+  .c-hero__cta:hover, .c-hero__cta:focus {
+    color: #d9d9d9; }
+  .c-hero__cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+  @media (min-width: 56.625rem) {
+    .c-hero__cta {
+      font-size: 1.8rem; } }
+  @media (min-width: 68.75rem) {
+    .c-hero__cta {
+      font-size: 2rem; } }
+
+.c-hero__arrow-right {
+  margin-left: 1em; }
+
+.c-arrow-pointing-right {
+  width: 2em;
+  height: 2em;
+  vertical-align: bottom; }
