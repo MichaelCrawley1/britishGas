@@ -1,0 +1,163 @@
+/* this class establishes the grid that can be manipulated at different screen sizes */
+
+.c-hero__with-grid
+	
+	display: grid
+	grid-template-columns: 5% repeat(2, 1fr) 5%
+	row-gap: 40px
+	+mq($width: 56.625rem)
+		row-gap: 0px
+
+/* this class holds the British gas image and the way the html is done the decoration
+	 is wrapped inside it */
+
+.c-hero__image-container
+
+
+	max-height: 50vh
+
+	grid-column: 1 / -1
+	+background($url: url(../img/gasManBackground.jpg), $bz:cover)
+	padding-bottom: 42%
+
+/* the bottom declaration class is inside the c-hero__image-container class in the html, this saves from
+	doing position absolute  */
+	
+.c-hero__bottom-decoration
+	
+	
+	transform: translateY(221.7%)
+	
+	+background($url: url(../img/underneathBsckground.png), $bz:cover)
+	padding-top: 20%
+
+	/* for some reason the height of the decoration  has to be manipulated when the grid changes
+		, hence the min-height property. */
+	+mq($width: 56.625rem)
+		transform: translateY(122%)
+		min-height: 23.7vh
+
+/* these two classes are essential when manipulating the grid!!  This is called, 'overlapping', you have to
+	explicitly tell the grid that you want the two elements to occupy the same space otherwise it will 
+	stack them on top like a display:block kind of thing */	
+.c-hero__image-container, .c-hero__text-container
+	+mq($width: 56.625rem)
+		grid-row: 1 / 2
+
+
+.c-hero__text-container
+	grid-column: 1 / -1
+	padding: 2em
+	+mq($width: 56.625rem)
+		grid-column: 1 / 3
+		background: white
+		align-self: start
+		margin-top: 3em
+		border-radius: 1.5em 1.5em 1.5em 0
+		
+		position: relative
+		z-index: 3
+
+		/* perfect box-shadow low shadow effect */
+		box-shadow: 0 .75em 3em 0 rgba(51,51,51,.15)
+	+mq($width: 68.75rem)
+		grid-column: 2 / 3
+	
+
+
+/* the block of classes down below are just classes that change the font size at different screen
+	sizes and are mostly concerned with how the text style appears on screen, pretty self-explanatory 
+	css */	
+	
+
+.c-hero__gas-second-heading
+	font-size: 1.9rem
+	margin: 1em 0
+	font-family: $ff-ss-b
+	+mq($width: 56.625rem)
+		font-size: 2.1rem
+	+mq($width: 102.0625rem)
+		font-size: 2.2368rem
+
+	
+.c-hero__gas-first-heading
+	font-weight: 100
+	font-family: $ff-ss
+	font-size: 3.24rem
+	letter-spacing: -0.01625em
+	line-height: 1.15
+	+mq($width: 56.625rem)
+		font-size: 4.7rem
+	+mq($width: 102.0625rem)
+		font-size: 6.104rem
+	
+.c-hero__bold
+	font-family: $ff-ss-b
+	
+
+.c-hero__prompt-message
+	font-size: 2rem
+	font-family: $ff-ss
+	letter-spacing: -0.01625em
+	line-height: 1.3
+	+mq($width: 56.625rem)
+		font-size: 2.3rem
+	+mq($width: 102.0625rem)
+		font-size: 2.5rem
+
+.c-hero__prompt-message-link
+	font-family: $ff-ss-b
+	font-weight: 400
+	text-decoration: underline rgb(0, 94, 184)
+	color: rgb(0, 94, 184)
+
+.c-hero__footnote	
+	position: relative
+	display: inline
+	background: rgb(0, 94, 184)
+	color: $white
+	vertical-align: top
+	font-family: $ff-ss-b
+	font-size: 1.28rem
+	padding: 0 .3em
+	border-radius: .18em
+	
+
+
+
+.c-hero__cta
+	font-size: 1.6rem
+	font-family: $ff-ss-b
+	text-decoration: none
+	color: $white
+	
+	
+
+	&:hover,
+	&:focus
+		color: darken($white, 15%)
+		
+
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+	+mq($width: 56.625rem)
+		font-size: 1.8rem
+	+mq($width: 68.75rem)
+		font-size: 2rem
+.c-hero__arrow-right
+	
+	margin-left: 1em
+	
+	
+.c-arrow-pointing-right
+	width: 2em
+	height: 2em
+	vertical-align: bottom
+	
+
+

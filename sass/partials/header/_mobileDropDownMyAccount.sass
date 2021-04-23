@@ -1,0 +1,116 @@
+.c-header__mobile-nav-drop-down-my-account
+	background: $accent
+	color: $white
+	padding-top: 4em 
+	padding-left: .5em
+	padding-right: .5em
+	border-bottom: solid 1px $accent
+	border-top: solid 1px $accent
+
+	/* this is when the mobile drop down is replaced by the desktop */
+
+	+mq($width: 47rem)
+		display: none
+
+
+.c-header__mobile-nav-drop-down-my-account-title
+
+	/* below is the my account mobile drop down containers, which could hold things
+		like flex items */
+
+.c-header__mobile-nav-drop-down-my-account-container-flex-item-properties
+	
+	align-items: stretch
+	flex-direction: column
+	margin-bottom: 1em
+	
+	margin-left: -.5em
+	margin-right: -.5em
+
+ /* end of mobile containers */
+
+
+
+.c-header__mobile-nav-drop-down-my-account-arrow-right
+	margin-right: .5em
+	font-size: 2.2rem
+
+.c-header__mobile-nav-drop-down-link
+
+/* the below technique I learned from the BBC website, this gives the option of doing your links 
+	after the button tags in the html markup rather than wrapping the button tags in links.  
+	The usual way to do it is do position: relative on the parent container (which in this case
+	is the button, this is in the button section with sass). Then you do position absolute
+	in the pseudo before element with the link tags, and with top to bottom of 0 you get access to
+	the whole parent container, meaning that the user can click anywhere on the button and it will
+	work . */
+.c-header__mobile-nav-drop-down-link::before	
+	content: ''
+	position: absolute
+	top: 0
+	bottom: 0
+	left: 0
+	right: 0
+
+/* end of BBC technique */
+
+
+.c-header__mobile-nav-drop-down-my-account-list-title
+	font-family: $ff-ss-b
+	margin-bottom: 0.5em
+	margin-top: 1.5em
+
+
+.c-header__mobile-nav-drop-down-list	
+	font-family: $ff-ss-b
+	font-size: 1.8rem
+	display: inline-block
+	margin: .5em 0em
+
+
+.c-header__mobile-nav-drop-down-my-account-list-item
+	margin-left: .5em
+
+	/* this modifier just gives more padding on the last child of the list items, to make 
+		the container of which the list is in not to look so crammed */
+
+.c-header__mobile-nav-drop-down-my-account-list-item--padding-change	
+	padding-bottom: 1em
+
+	/* end of modifier */
+	
+	/* this is to move the font awesome arrow more to the right and I had to !important
+		because this is the only way thus far i have found to overwrite font-awesome style-sheet CDN */	
+.c-header__mobile-nav-drop-down-my-account-list-arrow
+	margin-right: .4em
+	font-size: 2.2rem !important
+
+	/* end of font awesome arrow changes */
+
+
+	/* below is the class that gets put on the body tag (given access to the whole document design)
+		 with the JavaScript file when a user clicks on the my account logo.  Doing it this way
+		 keeps the javascript code short and it lets the css design change (with c-header's height) 
+		 and then go back to normal every time the user clicks on the button */
+
+
+.toggle-header
+	.c-header
+		height: 61rem
+		
+		+mq($width: 35.7rem)
+			height: 57rem
+		
+
+
+	.c-js-header__mobile-nav-my-account
+		background: $accent
+		color: $white
+
+	.covid-section-dropdown
+		pointer-events: none
+		
+
+	
+/* 	end of manipulating the body tag on click */ 
+	

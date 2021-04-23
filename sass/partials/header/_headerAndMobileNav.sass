@@ -1,0 +1,88 @@
+/* 	as explained in the html page this class is the flex parent for
+   	both the mobile nav and the desktop nav, at screen sizes 752px the 
+   	'my account' and 'menu' mobile nav will be replaced by the 
+    ul nav list of the desktop nav options. */
+
+.c-header__mobile-nav
+	font-size: 1.2rem
+	flex-direction: row
+	justify-content: flex-start
+	font-family: $ff-ss-b
+	margin-top: 1em
+
+.c-header__mobile-nav-logo
+	/*	at mobile screen sizes this is to create an end to end distance between the logo and the 
+		the mobile nav options */
+	flex: 1 1 auto
+	padding: 0em .5em
+	+mq($width: 47rem)
+		padding: 1em .5em
+	+mq($width: 114rem)
+		/*		the flex growth changes here to bring the distance closer between the logo and the desktop
+				options, because at large screen sizes the distance far apart is noticeable.  It will be apparent
+				that the growth has gone up here, which might lead one to think that the distance will be further. 
+				However, the desktop nav options have their own flex growth of one, bringing them closer together,
+				while still keeping a distance that looks presentable on screen. */
+
+		flex: 2 1 auto
+
+.c-header__mobile-nav-img
+	width: 8.5rem
+	height: 5.7rem
+	margin-top: -.5em
+	
+	/* at desktop screen sizes this width change on the logo image was to make the British Gas log appear 
+	   larger to take advantage of the larger screen real estate  */
+	+mq($width: 47rem)
+		width: 15.5rem
+		margin-left: -.5em
+
+	
+.c-js-header__mobile-nav-my-account
+	display: block
+	cursor : pointer
+	background: none
+	color: initial
+	padding: 0 1em
+	flex: 0 1 auto
+	text-align: center
+
+	/* this links to the comments mentioned with the flex parent, 'c-header__mobile-nav' at the top of this page
+  	 	and the html page., this takes out the mobile options of clicking my account and menu to make way for
+   		the desktop nav options.  c-header__mobile-nav is both the parent of these mobile options and the desktop by
+   		simply taking away the mobile options at the required screen size  */
+
+
+	+mq($width: 47rem)
+		display: none
+
+.c-header__mobile-nav-icons
+	font-size: 2.2rem
+
+
+.c-header__mobile-nav-my-account-and-menu-title
+
+
+
+.c-js-header__mobile-nav-menu
+	cursor : pointer 
+	padding: 0 1em
+	flex: 0 1 auto
+	text-align: center
+
+	/* this links to the comments mentioned with the flex parent, 'c-header__nav' at the top of this page
+   		and the html page., this takes out the mobile options of clicking my account and menu to make way for
+   		the desktop nav options.  C-header nav is both the parent of these mobile options and the desktop by
+   			simply taking away the mobile options at the required screen size */
+
+	+mq($width: 47rem)
+		display: none
+
+
+
+
+
+
+
+
+

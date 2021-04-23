@@ -30,11 +30,8 @@ Temporary Items
 .apdisk
 
 ### Sass ###
-.sass-cache/*
-*.css.map
-*.sass.map
-*.scss.map
-/sass*
+/sass/shug.sass
+
 
 
 
@@ -44,5 +41,5 @@ package-lock.json
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,sass
 
-.PostMastardsNotes1.rtfd/*
+.shug.css
 

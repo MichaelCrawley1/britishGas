@@ -1,0 +1,67 @@
+*, *::before, *::after
+	box-sizing: border-box
+
+html
+	font-size: 10px
+
+	
+
+body
+	color: $primary
+	font-family: $ff-ss
+	line-height: 1.5
+	background: $white
+	min-height: 100vh
+	overflow-x: hidden
+	
+	font-size: 1.6rem
+	height: 2000px
+	
+
+	
+
+
+
+img
+	max-width: 100%
+	display: block
+	height: auto
+
+
+h1, h2, h3, h5, p
+	margin-top: 0
+	margin-bottom: 1em
+
+
+h1
+
+	line-height: 1
+	font-size: 3.2rem
+
+.l-container
+	
+	margin: 0 auto
+	width: 95%
+.l-container__medium-screen
+	+mq($width: 97rem)
+		max-width: 85%
+
+.l-container__big-screen
+	+mq($width: 116rem)
+		max-width: 70%
+
+	
+	
+ul 
+	list-style: none
+	margin: 0
+	padding: 0
+	
+		
+.fa
+	font-size: 2.2rem
+
+
+
+
+

@@ -1,0 +1,88 @@
+/* did position fixed, to take it out of the document flow as per comments in the html document,
+	position: fixed always aligns with the position of the html element, width of 100 vw
+	to give access to the whole document width.  Could do the same thing with top, bottom, 
+	left, right of 0. */
+
+.c-js-header__mobile-nav-drop-down-menu
+	position: fixed
+	background: $accent
+	z-index: 2
+	color: $white
+	
+	width: 100vw
+	
+	height: 0
+	overflow: hidden
+
+
+	
+
+	
+
+/* get the list items stacked on one another with flex-direction: column */
+
+.c-js-header__mobile-nav-drop-down-menu-list
+	
+	flex-direction: column
+	font-size: 2.2rem
+	font-family: $ff-ss
+	font-weight: 100
+	line-height: 28px
+	margin: 0 
+	padding: .5em 0
+	
+
+
+
+.c-js-header__mobile-nav-drop-down-menu-list-item
+	padding: .455em 
+	margin-right: 3em
+
+		/*	goes a lighter blue when we hover on the list items */
+	&:hover
+		background: $hover-blue-menu-list
+
+
+	/* 	 below is the class that gets put on the body tag (given access to the whole document design)
+		 with the JavaScript file when a user clicks on the mobile menu logo.  Doing it this way
+		 keeps the javascript code short and it lets the css design change and then go back to 
+		 normal every time the user clicks on the button.  This time height is provided instead of the
+		 c-header class it is the c-js-header__mobile-nav-drop-down-menu */
+
+.toggle-menu
+	.c-header
+		border-bottom: none
+	.c-js-header__mobile-nav-drop-down-menu
+		position: fixed
+		background: $accent
+		z-index: 2
+		color: $white
+		
+		width: 100vw
+		margin-top: -.2em
+		border-top: solid 1px $accent
+		border-left: solid 1px $accent
+		border-right: solid 1px $accent
+		border-bottom: 1px solid $border-color
+		height: 26.4rem
+	
+
+		
+
+
+	.c-js-header__mobile-nav-menu
+		background: $accent
+		color: $white
+
+	.covid-section-dropdown
+		pointer-events: none
+		
+		
+	
+/* end of manipulating the body tag when a user clicks on the mobile menu option */
+
+		
+
+
+
+	 
