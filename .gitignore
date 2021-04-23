@@ -38,8 +38,15 @@ Temporary Items
 ###node modules####
 /node_modules
 package-lock.json
+package.json
+gulpfile.js
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,sass
 
-.shug.css
+.css/shug.css
 
+.beautyShop.jpg
+.britishGasDesignMobileFirst.xd
+.demo.hml					
+.mobliePic.png
+.home-services-landmark.jpg.thumb.48.48.png
