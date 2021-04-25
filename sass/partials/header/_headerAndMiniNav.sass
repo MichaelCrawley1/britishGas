@@ -1,0 +1,46 @@
+.c-header	
+
+	display: block
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	background: $white
+	z-index: 5 
+	height: 11.5rem
+	/* remember height on the section is 11.5rem before the my account mobile drop down comes down. */  
+	overflow: hidden
+	border: 1px solid $border-color
+
+	/* at 752 pixels screen size, the height of the header has to be extended, 
+	   to incorporate the 
+	   the bigger nav options and their subsequent drop-down menus */
+
+	+mq($width: 47rem)
+		padding-bottom: .5em
+		overflow: visible
+		height: 15.5rem
+	
+
+.c-header__mini-nav
+	background: $top-heading-background
+	text-transform: capitalize
+	font-size: 1.2rem
+	font-family: $ff-ss-b
+
+.c-header__mini-nav-list-item
+	padding: 1em .5em
+
+/* as this modifier suggests, just a background colour change to the other list item.  This gives 
+	the illusion that the colour white is part of the c-header background.  */
+.c-header__mini-nav-list-item--bg-color-change
+	background: $white
+	
+	
+	
+
+
+	
+
+
+

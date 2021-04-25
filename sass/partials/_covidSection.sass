@@ -1,0 +1,76 @@
+.c-js-covid__warning-section
+	margin-top: 7.2em
+	background: $primary
+	color: $white
+	
+	padding: 1em .2em 1em
+	height: auto
+	overflow: hidden
+	cursor: pointer
+	
+	+mq($width: 47.125rem)
+		margin-top: 9.5em
+	
+
+.c-covid__info
+
+	
+
+	flex-direction: row
+
+.c-covid__icon-container
+
+/*	this modifier keeps a distance from the paragraph and the right icon, but no so much of a
+	distance that it makes the design look like that the space hasn't been utilized.  This is due
+	to the paragraph having a flex grow of 2, it seems to work quite well */ 
+
+.c-covid__icon-container--flex-grow
+	flex: 1 1 auto
+/*	end of modifier */
+
+
+.c-covid__icon-left
+	width: 2em
+	height: 2em
+
+
+.c-covid__paragraphs-container
+	flex: 2 1 auto
+
+
+	
+.c-covid__paragraphs		
+	margin: 0 auto 
+	padding: .5em .5em 0
+	width: 90%
+		
+.c-covid__toggle-paragraphs-container
+	display: none		
+		
+
+.c-covid__link
+	color: $white
+	font-family: $ff-ss-b
+		
+
+.c-covid__icon-right
+	width: 2em
+	height: 2em
+	flex: 0 1 auto
+
+.c-covid__icon-right-on-click
+	width: 2em
+	height: 2em
+	flex: 0 1 auto
+	display: none
+
+.c-js-covid__section-dropdown
+	
+
+	.c-covid__toggle-paragraphs-container
+		display: block
+	.c-covid__icon-right-on-click
+		display: block
+
+	.c-covid__icon-right
+		display: none

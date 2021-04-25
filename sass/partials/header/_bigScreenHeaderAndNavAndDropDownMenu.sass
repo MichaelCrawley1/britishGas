@@ -1,0 +1,441 @@
+	/* this is the big screen nav, it comes in at 752 px, like mentioned in the html document,
+		it is a child of the flex parent of, 'c-header__mobile-nav' while being the flex parent for the
+		desktop nav menu options, the display none, is to let the mobile nav options take precedence, 
+		the display flex at 752 px screen size is to take precedence over the mobile options */
+
+
+.c-header__big-nav
+	display: none
+
+	+mq($width: 47rem)
+
+		display: flex
+		flex-direction: row
+		align-items: flex-end
+	
+
+	
+		
+		font-size: 1.6rem
+		font-family: $ff-ss-b
+		margin-top: 2em
+	/*	the below media query links the the British gas logo, it shortens the distance at 1824px
+		but also giving more growth to the British gas logo */  
+
+	+mq($width: 114rem)
+		flex: 1 1 auto
+
+	
+
+.c-header__big-nav-list
+	display: block
+	padding: 1em .5em
+
+	&:hover,
+	&:focus
+		background: $accent
+	
+		color: $white
+		.c-header__big-nav-drop-down--collapse-menu
+		
+			height: auto
+			overflow: visible
+	
+	+mq($width:50.4375rem)
+		padding: 1em 1em
+
+		/*	big nav drop down menu here, it is position absolute taken its nearest position ancestor
+			the 'c-header' element, which is a position fixed.  Since fixed goes with the html element,
+			by doing position absolute with the big nav drop down we get access to whole width of the 
+			screen which is what we want.  There is negative measurements to take out the space that
+			was occupied by the c-header's borders. */
+
+.c-header__big-nav-drop-down
+	
+	background: $accent
+	color: $white
+	
+
+	position: absolute
+
+
+	top: 8.9em
+	left: -0.2em
+	
+	right: -0.2em
+
+	/* modifier for the big nav element to collapse and extend its height on hover the 
+		'c-header__big-nav-list' */
+.c-header__big-nav-drop-down--collapse-menu
+	height: 0
+	overflow: hidden
+		/* end of modifier */	
+
+
+	
+/* this enables when it is screen size to do two columns that they center, to take up
+	the screen real estate available */
+.c-header__big-nav-drop-down-flex-children-properties
+	justify-content: center
+
+	
+
+.c-header__big-nav-flex-item-properties
+	margin: 1.5em 1.8em 1.5em 0
+	padding-top: 1em
+	padding-right: 3em
+	padding-left: .5em
+
+	+mq($width: 80rem)
+		padding-right: 0
+		padding-left: 0
+
+
+
+/* modifier to add a border on the columns after the first column, in other words the subsequent
+	columns after the first have a border to them */
+.c-header__big-nav-flex-item-properties--border-left
+	
+	border-left: 1px solid #09f
+	margin-left: 3em
+	padding-left: 1.5em
+		/* end of modifier */	
+
+
+	
+
+/* modifier to bring in the third flex column on a larger screen size as it will not fit on smaller
+   screens  */
+
+.c-header__big-nav-flex-item-properties--very-large-screen
+	display: none
+		/* it has a grow on flex to mirror the design for the original British gas site giving it seemly more space
+			that the first two columns. */
+	+mq($width: 80rem)
+		display: block
+		flex: 1 1 auto
+		border-left: 1px solid #09f
+		
+		padding-left: 1.5em
+
+			/* end of modifier */
+
+.c-header__big-nav-drop-down-title-block
+
+	
+
+/* this modifier ties in with the grid column experiment where the, 
+	'c-header__big-nav-drop-down-grid-box-two--experiment' acts as the container parent to access the 
+	whole container so we can do flex-direction: column in the child (the parent of the flex item
+	elements) */ 
+
+.c-header__big-nav-drop-down-title-block--flex-parent-direction-column
+	flex-direction: column
+	justify-content: space-between
+
+			/* end of modifier */
+
+
+
+.c-header__big-nav-drop-down-title
+	font-family: $ff-ss-b
+	font-size: 1.8rem
+	margin-bottom: 0.5em
+	margin-left: .2em	
+
+.c-header__big-nav-drop-down-title-content
+	margin-left: .5em
+	margin-bottom: .5em
+	font-family: $ff-ss
+
+
+/* modifier for the one of the unordered lists to have no margin bottom */
+.c-header__big-nav-drop-down-title-content--margin-bottom
+	margin-bottom: 0
+
+/*end of modifier*/
+
+.c-header__big-nav-drop-down-title-content-item
+
+.c-header__big-nav-drop-down-list-arrow
+	margin-right: 1em
+	
+
+
+.c-header__big-nav-drop-down-cta-holder
+
+.c-header__big-nav-drop-down-cta-title
+	font-family: $ff-ss
+
+/* BELOW IS THE C-HEADER__BIG-NAV-DROP-DOWN-CONTAINER MODIFIERS */
+
+/* this class was usually modified when it was wanting to flex items underneath it (children) */
+.c-header__big-nav-drop-down-container
+
+
+/* this was a modifier as a parent to the text and image as flex items, this made sure the two items
+    became nearer the heading element inside the column  */
+.c-header__big-nav-drop-down-container--flex-parent
+
+	+mq($width: 78rem)
+		margin-top: -3em
+/* end of modifier */	
+
+/* this was the container of the heading that was above (not a parent) of the above modifier, this 
+	modifier was just to give the appearance that the heading had a line break */
+.c-header__big-nav-drop-down-container--narrow-width
+	+mq($width: 67rem)
+		width: 50%
+/* end of modifier */
+
+
+
+
+
+
+/*	 this modifier was just to swap the order of the buttons as i discovered i had them in the wrong 
+	order as per design of the original British gas site */
+.c-header__big-nav-drop-down-container--flex-reverse
+	flex-direction: row-reverse
+	justify-content: flex-end
+	flex-wrap: wrap
+/* end of the modifier */
+
+
+/* because of the above modifier, the row reverse made the buttons too close to each other, this
+	modifier just separated them */
+.c-header__big-nav-drop-down-container--button-padding
+	padding-right: 1em
+/* end of modifier */
+
+/* this item was side by side with the image, to get it to match the British Gas Design I had to 
+	move it down a little, so when the parent container is flex-direction: row you can use align-
+	self to move it down, almost as if the align self is on its own flex-direction: column. */	
+.c-header__big-nav-drop-down-container--flex-grow
+	align-self: flex-end
+	+mq($width: 86rem)
+		align-self: center
+		padding-right: 1em
+/*	end of modifier */
+
+/*	simple modifier here, just trying to bring the long button underneath the text and the British Gas
+	image up a little */
+
+.c-header__big-nav-drop-down-container--c-button-parent-flex-stretch	
+	margin-top: 1em
+/* end of modifier */
+
+
+
+/* END OF THE C-HEADER__BIG-NAV-DROP-DOWN-CONTAINER MODIFIERS */
+
+.c-header__big-nav-drop-down-c-button-parent
+	padding-right: 9em
+	align-self: center
+
+
+
+
+
+
+.c-header__big-nav-drop-down-title-content-item--margin-change
+	margin-top: 1em
+
+
+/* 	the !important is to override the font awesome cdn stylesheet, gone with this because i haven't
+	found another way to manipulate the styling from the font-awesome styles  */
+
+.c-header__big-nav-drop-down-arrow-right
+	font-size: 2.8rem !important
+	margin-right: .3em
+	vertical-align: -12%
+	line-height: 0.75em !important
+
+			/* end of font awesome modification */
+
+.c-header__big-nav-drop-down-link
+
+.c-header__big-nav-drop-down-image-parent
+	margin-top: -4em
+
+/* this works out below, but really i didn't need this */
+.c-header__big-nav-drop-down-cta-img
+	max-width: 90%
+
+.c-header__big-nav-drop-down-cta-img--box-shadow
+
+	
+.c-header__big-nav-drop-down-cta-img--move-margin
+
+
+			/*  ||trying the second drop down menu with display grid || */
+			/*  || GRID HERE AND ALL THEIR COLUMNS WITH MODIFIERS || */
+.c-header__big-nav-drop-down-grid
+	display: grid
+	grid-template-columns: repeat(3, 1fr)
+			/* at screen size 1200 we can fit in the 4th column */
+	+mq($width: 75rem)
+		grid-template-columns: repeat(4, 1fr)
+
+		/* the grid modifiers below, allows the grid to be displayed differently for each desktop drop down menu,
+			to match the design spec */
+
+.c-header__big-nav-drop-down-grid--second-one
+	grid-template-columns: repeat(2, 1fr)
+
+	/*	I thought the modifier classes would need repeat overrides to override the element class's media
+		queries but no, the modifiers take precedence even before the element's media queries changes
+		in other words, you can just focus on the media queries to the modifiers individually, without 
+		worrying what the element classes are doing, however I think if you don't have a media query then
+		it will use the first class's media query. Nope just did an experiement, this class one even
+		without a meida query. Now that I think about it, it might be the order of the css! */ 
+
+	+mq($width: 69.3125rem)
+		grid-template-columns: repeat(3, 1fr)
+	
+
+
+.c-header__big-nav-drop-down-grid--third-one
+	grid-template-columns: repeat(3, 1fr)
+	
+	/* THIS ENDS THE THE THREE GRID DESIGNS FOR THE DROP DOWN MENUS */
+
+	/* NOW ON TO THE GRID COLUMN BOXES */
+
+	/* the grid boxes are the individual columns of the grid, hence some need amendments to meet the 
+		content of the site.   In that regard because flex is content driven, some of the designs of the 
+		individual grid columns are also a flex parent or item which see at the classes below. */
+
+	/*	The naming convention that developed organically is that grid box stands for grid column one,
+	 	grid box two and stand for grid column three, etc, that is now being changed.  To keep a central class
+	 	for all grid columns was overkill because each column was getting its own modifier, it ended up
+	 	leading to unnecessary classes.  The new way of doing the grid columns was to make the element 
+	 	classes, 'c-header__big-nav-drop-down-grid-box-one, two, three four etc'  This meant that for
+	 	each new grid design if any column needed to be modified, we modified on the number of column 
+	 	it was on, much easier to follow that way.  There is a helper class here of inner grid boxes 
+	 	margins because it was deemed a lot of the grid columns where using the same margins. */
+.c-header__big-nav-drop-down-grid-box-one
+	border-right: 1px solid #09f
+
+ /* modifier for another drop down grids first column */
+.c-header__big-nav-drop-down-grid-box-one--flex-parent
+
+	justify-content: center
+	
+	+mq($width: 69.3125rem)
+		justify-content: flex-start
+/*	end of modifier for the first grid column per grid */
+	
+
+.c-header__big-nav-drop-down-grid-box-two 
+	margin: 1.5em 1.8em 1.5em 0.8em
+	border-right: 1px solid #09f
+	+mq($width: 49.1875rem)
+		margin: 1.5em 1.8em 1.5em 0
+	
+/* modifier for column two depending what grid it is, one wants to start at text-align center, then
+	when it gets to bigger screens go back to the left. */
+
+.c-header__big-nav-drop-down-grid-box-two--flex-parent
+	justify-content: center
+	border-right: none
+	+mq($width: 69.3125rem)
+		justify-content: flex-start
+		border-right: 1px solid #09f
+
+
+
+
+
+
+/*  this modifier follows on from the html description of getting the, 'justify-content: space-between'
+	to work when it is flex direction: column.  This alone will not give the desired effect.
+	there are two solutions to get the space from a flex-direction: column.  One way is you find out the actual
+	height of the whole container in the computed section in the Google Dev tools and you then put in that
+	explicit height in the class below.  You can see i have not gone with that solution, reason being it will not
+	flex when the screen gets tighter because it is an explicit height.  To remedy that, we access the parent
+	of, 'c-header__big-nav-drop-down-title-block--flex-parent-direction-column' which is displayed below.  While
+	the below class has no properties to speak off, the class is a display flex from the helper class we have. 
+	we do not need to put in flex-direction: row because that is the default, but to make the comments to resonate
+	with whoever reads them, should give the details of why i did what i did, now with this solution it gives
+	access to the whole height of the div and it will flex when the screen gets smaller.  Win, win.  */
+
+	
+.c-header__big-nav-drop-down-grid-box-two--experiment
+	flex-direction: row
+
+/* end of modifier for grid column two */	
+
+
+.c-header__big-nav-drop-down-grid-box-three
+	border-right: none
+	
+	+mq($width: 75rem)
+		border-right: 1px solid #09f
+
+/* modifier for grid column three depending what grid it is */
+.c-header__big-nav-drop-down-grid-box-three--media-query-changes
+	display: none
+	+mq($width: 69.3125rem)
+		display: block
+	
+	+mq($width: 75rem)
+		border-right: none
+.c-header__big-nav-drop-down-grid-box-three--no-borders
+	+mq($width: 75rem)
+		border-right: none
+
+/* end of modifiers for the grid column three */
+
+/* no modifiers for grid column 4 as of yet */
+
+.c-header__big-nav-drop-down-grid-box-four
+	border-right: none
+	display: none
+	+mq($width: 75rem)
+		display: block
+
+
+
+
+
+
+
+
+/* yeah this element is a stand alone element, to get the two lists to appear side by side */
+
+.c-header__big-nav-drop-down-title-content-items-flex-right
+	padding-right: 1em
+	padding-left: 3em
+	margin-top: 2.3em
+/* end of this element */
+	
+
+
+
+
+
+/* below is the last drop down grid and the last grid column where the two buttons have been
+	reversed, this is just the text following the proper font size and non bold */
+	
+
+.c-header__big-nav-drop-down-cta-desc
+	font-size: 2.2rem
+	font-family: $ff-ss
+
+/* end of this element */
+	
+/* below is not a component button, but a button that just belongs to the header section, because it
+	is never repeated */	
+.c-header__big-nav-drop-down-button-style
+	background: $accent
+	color: $white
+	border: 2px solid $white
+	padding: .38em 1.3em 0.4em 1.6em
+	line-height: 1.15
+	margin-top: 1em
+	+mq($width: 67.75rem)
+		margin-top: 0
+
+/* end of the drop-down's own button design. */
+

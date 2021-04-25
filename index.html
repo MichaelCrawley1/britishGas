@@ -8,126 +8,584 @@
                       minimum-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gas and electricity, boilers and energy efficiency - British Gas</title>
-    <link rel="stylesheet" href="css/main.css" type="text/css">
     <script src="https://use.fontawesome.com/5ece993d24.js" defer></script>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
     <script src="js/navDropDownMenuAndMyAccount.js" defer></script>
     <script src="js/CovidSectionArrowChange.js" defer></script>
 </head>
 
 <body>
-    <!--This section encloses page headings
-        with the british gas logo and account and menu headings only--->
-    <section class="header">
-        <div class="top-list">
-            <div class="container">
-                <div class="background-white">My home</div>
-                <div class="item-2">My business</div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="under-top">
-                <div><img class="logo" src="img/logo.svg" alt="British Gas Logo"></div>
-                <div class="nav-menu-before-click nav-menu-after-click"><span class="icons"><i class="fa fa-user"></i></span>
-                    <p>My Account</p>
+    <!---html classes will be set up using the Block Element Modifier (BEM) styled system.  My method will involve letters with dashes (-) as a prefix to enabled the reader to understand if a section of code is a component or a layout element.  Glossary is displayed below:
+
+        c- = this equals a component that is likely to get reused
+        l- = this equals a class that acts as block layout like a reusable container for example
+        h- = the h prefix is to signify helper classes like clearfix to get elements back in the html document flow
+        js- = this is to signify when we need to use JavaScript on an block or a block element to bring in dynamic functionality.
+        c-js- = will refer to both components and components that rely on JavaScript functionality
+        c-mq- = could be for media queries.
+
+        In addition, throughout this document there will be a comment that says, 'modifier here, please see css comments for what this does or what it is for'.  This way by using the find search tool provided by the editor we can quickly find the modifier we are looking for.  Might be an advantage to say for media queries too.
+        ---->
+    <!--This section has the nav menus for the mobile screen and desktop screen using display: flex and grid for some drop down columns--->
+    <!---the header section---->
+    <section>
+        <header class="c-header">
+            <!---This is the beginning of the website with the header and the mini nav section---->
+            <div class="c-header__mini-nav">
+                <div class="l-container l-container__medium-screen l-container__big-screen">
+                    <!---flex parent---->
+                    <div class="h-flex-children">
+                        <!---flex items---->
+                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                        <div class="c-header__mini-nav-list-item c-header__mini-nav-list-item--bg-color-change h-flex-item">My home</div>
+                        <div class="c-header__mini-nav-list-item h-flex-item">My business</div>
+                        <!---end of flex items---->
+                    </div>
+                    <!----end of flex parent--->
                 </div>
-                <div class="menu-pointer"><span class="icons"><i class="fa fa-reorder"></i></span>
-                    <p>Menu</p>
+            </div>
+            <!---end of mini nav---->
+            <!--this is the main mobile nav section including the small British gas logo and the, 'menu' and, 'my account' icons that uses javascript to enable the functionality of the drop down menus--->
+            <div class="l-container l-container__medium-screen l-container__big-screen">
+                <!---The, 'key' flex parent for the mobile nav and the desktop nav---->
+                <div class="c-header__mobile-nav h-flex-children">
+                    <!----flex item logo mobile and desktop---->
+                    <div class="c-header__mobile-nav-logo h-flex-item"><img class="c-header__mobile-nav-img" src="img/logo.svg" alt="British Gas Logo"></div>
+                    <!---end of flex item logo mobile and desktop---->
+                    <!----flex item my account mobile nav---->
+                    <div class="c-js-header__mobile-nav-my-account h-flex-item"><span class="c-header__mobile-nav-icons"><i class="fa fa-user"></i></span>
+                        <p class="c-header__mobile-nav-my-account-and-menu-title">My Account</p>
+                    </div>
+                    <!----end of flex item my account mobile nav--->
+                    <!----flex item menu mobile nav---->
+                    <div class="c-js-header__mobile-nav-menu h-flex-item"><span class="c-header__mobile-nav-icons"><i class="fa fa-reorder"></i></span>
+                        <p class="c-header__mobile-nav-my-account-and-menu-title">Menu</p>
+                    </div>
+                    <!---end of flex item mobile nav menu---->
+                    <!---this ends the display of the mobile nav, however the, 'c-header__mobile-nav' element still becomes the parent to flex both the mobile menu and the big screen menu, thus the 'c-header__mobile-nav' is closed after the big screen navigation ---->
+                    <!---below is the big screen navigation, it is both its own flex parent for the big nav list items and the child of the overall 'c-header__mobile-nav' element--->
+                    <ul class="c-header__big-nav h-flex-children h-flex-item">
+                        <li class="c-header__big-nav-list">Energy
+                            <!---first big screen drop down menu using flex box--->
+                            <!---modifier here, please see css comments for the purpose of this modifier--->
+                            <div class="c-header__big-nav-drop-down c-header__big-nav-drop-down--collapse-menu">
+                                <div class="l-container l-container__medium-screen l-container__big-screen">
+                                    <!---flex parent for the three column big nav drop-down layout---->
+                                    <div class="c-header__big-nav-drop-down-flex-children-properties h-flex-children">
+                                        <!---first drop down column of flex---->
+                                        <div class="c-header__big-nav-flex-item-properties h-flex-item">
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Gas & Electricity
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Our gas & electricity tariffs</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Get a quote</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Tariff Information Labels</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Connections for new builds</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Warm Home Discount</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Refer a friend</li>
+                                                </ul>
+                                            </div>
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Existing energy customers
+                                                </h5>
+                                                <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                <ul class="c-header__big-nav-drop-down-title-content c-header__big-nav-drop-down-title-content--margin-bottom">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Manage your energy</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Moving home</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Pay your bill
+                                                    </li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Struggling to pay</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!--end of first drop-down flex column--->
+                                        <!---next flex column--->
+                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                        <div class="h-flex-item c-header__big-nav-flex-item-properties c-header__big-nav-flex-item-properties--border-left">
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Green Future Tariff
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Renewable energy sources</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> UK woodland protection</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Carbon neutral gas</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Our worldwide initiatives
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Electric Vehicles
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Electric vehicle tariff</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> The benefits of electric vehicles</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Charging your electric vehicle</li>
+                                                </ul>
+                                            </div>
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Energy Advice
+                                                </h5>
+                                                <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                <ul class="c-header__big-nav-drop-down-title-content c-header__big-nav-drop-down-title-content--margin-bottom">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Energy guides</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Smart meters</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!--- end of the second flex column, these two columns are centered when it is just the two on display but then change to left side when the third flex column is brought in--->
+                                        <!---this extra flex column is brought in at about 1200 pixels 75rem--->
+                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                        <div class="h-flex-item c-header__big-nav-flex-item-properties c-header__big-nav-flex-item-properties--very-large-screen">
+                                            <div class="c-header__big-nav-drop-down-cta-holder">
+                                                <h1 class="c-header__big-nav-drop-down-cta-title">Find the energy tariff for </br> you</h1>
+                                                <!----mini flex parent for the cta button and image---->
+                                                <div class="c-header__big-nav-drop-down-container h-flex-children">
+                                                    <!---flex item cta button---->
+                                                    <div class="c-header__big-nav-drop-down-c-button-parent h-flex-item ">
+                                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                        <button class="c-button c-button--small"><span class="fa fa-angle-right c-header__big-nav-drop-down-arrow-right"><a class="c-header__big-nav-drop-down-link" href=""></a></span>Get a quote</button>
+                                                    </div>
+                                                    <!---end of flex item cta button---->
+                                                    <!----flex item image----->
+                                                    <div class="c-header__big-nav-drop-down-image-parent h-flex-item">
+                                                        <img src="img/dropDownBGLogo.png" alt="drop down image" class="c-header__big-nav-drop-down-cta-img">
+                                                    </div>
+                                                    <!---end of flex item image---->
+                                                </div>
+                                                <!---end of flex parent for cta button and image--->
+                                            </div>
+                                        </div>
+                                        <!---end of the third flex column---->
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!--- this ends the first big drop down menu--->
+                        <li class="c-header__big-nav-list">Home Services
+                            <!---second big screen drop down menu using grid to compare against the first flex drop-down, this doesn't use flex at all--->
+                            <!---modifier here, please see css comments for the purpose of this modifier--->
+                            <div class="c-header__big-nav-drop-down c-header__big-nav-drop-down--collapse-menu">
+                                <div class="l-container l-container__medium-screen l-container__big-screen">
+                                    <!---grid parent container--->
+                                    <div class="c-header__big-nav-drop-down-grid">
+                                        <!---grid column section--->
+                                        <div class="c-header__big-nav-drop-down-grid-box-one h-grid-box-margins">
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Boilers and heating
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Boiler & heating cover</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Boiler & heating repair</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Annual boiler Service</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> New boilers</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Understand your boiler</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Understand your price</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Boiler support</li>
+                                                </ul>
+                                            </div>
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Existing customers
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Book an engineer</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Track an engineer</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Moving Home</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!---end of first grid column--->
+                                        <!---second grid column--->
+                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                        <div class="c-header__big-nav-drop-down-grid-box-two">
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Plumbing and drains
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Plumbing and drain cover</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Plumbing and drain repair</li>
+                                                </ul>
+                                            </div>
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Appliances and electrical
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Appliances and electrical cover</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Appliances and electrical repair</li>
+                                                </ul>
+                                            </div>
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Landlords
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Landlords cover</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Landlords repair</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Landlords insurance</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!---end of second grid column--->
+                                        <!---third grid column--->
+                                        <div class="c-header__big-nav-drop-down-grid-box-three h-grid-box-margins">
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Home insurance
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Buildings and content cover</li>
+                                                </ul>
+                                            </div>
+                                            <div class="c-header__big-nav-drop-down-title-block">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Home improvements
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Home safety</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Savings & efficiency</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Radiators & heating</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Limescale & Water</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!---end of third of grid column--->
+                                        <!---fourth grid column, the fourth grid column snaps off when the screen becomes too tight--->
+                                        <div class=" c-header__big-nav-drop-down-grid-box-four h-grid-box-margins">
+                                            <div class="c-header__big-nav-drop-down-cta-holder">
+                                                <h1 class="c-header__big-nav-drop-down-cta-title">Get peace of mind with HomeCare</h1>
+                                                <div class="c-header__big-nav-drop-down-container">
+                                                    <div class="c-header__big-nav-drop-down-c-button-parent">
+                                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                        <button class="c-button c-button--small"><span class="fa fa-angle-right c-header__big-nav-drop-down-arrow-right"><a class="c-header__big-nav-drop-down-link" href=""></a></span>View HomeCare</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---end of the fourth grid column--->
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!--end of drop-down menu for the home services--->
+                        <li class="c-header__big-nav-list">Smart Home
+                            <!---smart home drop down menu, using grid and flex for the first time---->
+                            <!---modifier here, please see css comments for the purpose of this modifier--->
+                            <div class="c-header__big-nav-drop-down c-header__big-nav-drop-down--collapse-menu">
+                                <div class="l-container l-container__medium-screen l-container__big-screen">
+                                    <!---the grid container for the smart home, this time is does include flex for the content--->
+                                    <!---modifier here, please see css comments for the purpose of this modifier--->
+                                    <div class="c-header__big-nav-drop-down-grid c-header__big-nav-drop-down-grid--second-one">
+                                        <!---first grid column with flex for the content, flex parent---->
+                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                        <div class="c-header__big-nav-drop-down-grid-box-one h-grid-box-margins h-flex-children  c-header__big-nav-drop-down-grid-box-one--flex-parent">
+                                            <!---flex item---->
+                                            <div class="c-header__big-nav-drop-down-title-block h-flex-item">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Getting Started
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> What is a smart home</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Controlling your home</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Looking after your home</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Hive, a british gas innovation</li>
+                                                </ul>
+                                            </div>
+                                            <!---end of flex item---->
+                                        </div>
+                                        <!---end of first grid column with flex parent included---->
+                                        <!---second grid column with grid and flex, with the flex parent---->
+                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                        <div class="c-header__big-nav-drop-down-grid-box-two h-grid-box-margins h-flex-children c-header__big-nav-drop-down-grid-box-two--flex-parent">
+                                            <!---first flex div, to get the unordered lists side by side---->
+                                            <div class="c-header__big-nav-drop-down-title-block h-flex-item">
+                                                <h5 class="c-header__big-nav-drop-down-title">
+                                                    Smart Products
+                                                </h5>
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Heating</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Smart meters</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Fault detection</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Security</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Sensors</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Lighting</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Radiator Valve</li>
+                                                </ul>
+                                            </div>
+                                            <!---end of first flex div---->
+                                            <!---second flex div, to get the unordered lists side by side--->
+                                            <div class="h-flex-item  c-header__big-nav-drop-down-title-content-items-flex-right">
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Plugs</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Cameras</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Starter pack</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Hubs</li>
+                                                </ul>
+                                            </div>
+                                            <!---end of second flex div---->
+                                        </div>
+                                        <!---end of second grid box with flex---->
+                                        <!---third grid box with flex only on the image and the, 'control your heating' heading, there is a separate flex on the button at the end---->
+                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                        <div class="c-header__big-nav-drop-down-grid-box-three h-grid-box-margins c-header__big-nav-drop-down-grid-box-three--media-query-changes">
+                                            <div class="c-header__big-nav-drop-down-cta-holder ">
+                                                <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                <div class="c-header__big-nav-drop-down-container c-header__big-nav-drop-down-container--narrow-width">
+                                                    <h1 class="c-header__big-nav-drop-down-cta-title">Hive Active heating</h1>
+                                                </div>
+                                                <!---flex parent here of the image and the, 'control your heating' heading--->
+                                                <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                <div class="c-header__big-nav-drop-down-container h-flex-children c-header__big-nav-drop-down-container--flex-parent">
+                                                    <!---flex item, 'control your heating' ---->
+                                                    <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                    <div class="h-flex-item c-header__big-nav-drop-down-container--flex-grow">
+                                                        <h2 class="c-header__big-nav-drop-down-cta-desc">Control your heating from your phone</h2>
+                                                    </div>
+                                                    <!---end of flex item, 'control your heating'---->
+                                                    <!---flex item of the image---->
+                                                    <div class="c-header__big-nav-drop-down-container h-flex-item">
+                                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                        <img src="img/mobliePic.png" alt="british gas hive on mobile" class="c-header__big-nav-drop-down-cta-img c-header__big-nav-drop-down-cta-img--move-margin">
+                                                    </div>
+                                                    <!---end of flex item 2, the image --->
+                                                </div>
+                                                <!--- end of flex parent of the image and the, 'control your heating' heading--->
+                                                <!---flex parent of the bottom button--->
+                                                <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                <div class="c-header__big-nav-drop-down-container h-flex-children c-header__big-nav-drop-down-container--c-button-parent-flex-stretch">
+                                                    <!---the button is the flex item, eventually decided against it---->
+                                                    <div class="c-header__big-nav-drop-down-container h-flex-item ">
+                                                        <div class="c-header__big-nav-drop-down-c-button-parent">
+                                                            <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                            <button class="c-button c-button--small"><span class="fa fa-angle-right c-header__big-nav-drop-down-arrow-right"><a class="c-header__big-nav-drop-down-link" href=""></a></span>Discover Hive Active Heating</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---end of the button as the flex item--->
+                                            </div>
+                                            <!---close of the parent flex button div--->
+                                        </div>
+                                        <!---end of last grid column with flex---->
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!---end of the smart home drop down menu---->
+                        <li class="c-header__big-nav-list">Help & Support</li>
+                        <!---nothing here, the original British gas site, didn't have anything for this section either---->
+                        <li class="c-header__big-nav-list">My Account
+                            <!---my account drop down menu using grid and flex---->
+                            <!---modifier here, please see css comments for the purpose of this modifier--->
+                            <div class="c-header__big-nav-drop-down c-header__big-nav-drop-down--collapse-menu">
+                                <div class="l-container l-container__medium-screen l-container__big-screen">
+                                    <!---my account overall grid----->
+                                    <!---modifier here, please see css comments for the purpose of this modifier--->
+                                    <div class="c-header__big-nav-drop-down-grid c-header__big-nav-drop-down-grid--third-one">
+                                        <!---flex parent of first drop down box---->
+                                        <div class="c-header__big-nav-drop-down-grid-box-one h-flex-children h-grid-box-margins">
+                                            <!---item to be flexed---->
+                                            <div class="c-header__big-nav-drop-down-title-block h-flex-item">
+                                                <ul class="c-header__big-nav-drop-down-title-content">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Submit a meter reading</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Your bill</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Compare my energy usage</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Book an engineer</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Track an engineer</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Moving home</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Keeping your account safe</li>
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Check out our new app</li>
+                                                </ul>
+                                            </div>
+                                            <!----end of flexed item---->
+                                        </div>
+                                        <!---end of first grid box with flex---->
+                                        <!---second grid box with flex---->
+                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                        <div class="c-header__big-nav-drop-down-grid-box-two h-flex-children h-grid-box-margins   c-header__big-nav-drop-down-grid-box-two--experiment">
+                                            <!--- flex parent, this time it is flex direction: column, to use the property of, 'justify-content: space-between;' with flex direction column you need to either set an explicit height on the parent to give access to the full container's height or set the grandparent (the div that holds the full container) to flex too, but this time flex direction row.  Tl; DR set the grandparent to flex direction row and the parent div to flex direction column to access the justify content space between property at column direction.---->
+                                            <!---modifier here, please see css comments for the purpose of this modifier--->
+                                            <div class="c-header__big-nav-drop-down-title-block h-flex-children c-header__big-nav-drop-down-title-block--flex-parent-direction-column">
+                                                <!---first flex item--->
+                                                <ul class="c-header__big-nav-drop-down-title-content h-flex-item ">
+                                                    <li class="c-header__big-nav-drop-down-title-content-item"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Rewards</li>
+                                                    <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                    <li class="c-header__big-nav-drop-down-title-content-item c-header__big-nav-drop-down-title-content-item--margin-change"><span class="fa fa-angle-right c-header__big-nav-drop-down-list-arrow"></span> Refer a friend</li>
+                                                </ul>
+                                                <!---end of first flex item---->
+                                                <!---second flex item---->
+                                                <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                <div class="c-header__big-nav-drop-down-container h-flex-item">
+                                                    <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                    <img src="img/rewardsPic.png" alt="british gas rewards" class="c-header__big-nav-drop-down-cta-img c-header__big-nav-drop-down-cta-img--box-shadow">
+                                                </div>
+                                                <!---experimented with the box shadow, decided against it --->
+                                                <!---end of second flex item--->
+                                            </div>
+                                            <!---end of flex parent--->
+                                        </div>
+                                        <!---end of second grid box and flex grandparent---->
+                                        <!---third grid box----->
+                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                        <div class="c-header__big-nav-drop-down-grid-box-three h-grid-box-margins c-header__big-nav-drop-down-grid-box-three--no-borders">
+                                            <div class="c-header__big-nav-drop-down-cta-holder ">
+                                                <div class="c-header__big-nav-drop-down-container">
+                                                    <h2 class="c-header__big-nav-drop-down-cta-desc">Book an engineer, pay bills, join Rewards and more</h2>
+                                                </div>
+                                                <!---flex parent--->
+                                                <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                <div class="c-header__big-nav-drop-down-container h-flex-children
+                                                c-header__big-nav-drop-down-container--flex-reverse">
+                                                    <!---flex item--->
+                                                    <div class="c-header__big-nav-drop-down-container h-flex-item ">
+                                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                        <button class="c-button c-button--small "><span class="fa fa-angle-right c-header__big-nav-drop-down-arrow-right"><a class="c-header__big-nav-drop-down-link" href=""></a></span>Log in</button>
+                                                    </div>
+                                                    <!---end of first flex item--->
+                                                    <!---second flex item--->
+                                                    <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                    <div class="c-header__big-nav-drop-down-container h-flex-item c-header__big-nav-drop-down-container--button-padding">
+                                                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                                                        <button class="c-button c-button--small c-header__big-nav-drop-down-button-style"><span class="fa fa-angle-right c-header__big-nav-drop-down-arrow-right"><a class="c-header__big-nav-drop-down-link" href=""></a></span>Register</button>
+                                                    </div>
+                                                    <!---end of second flex item--->
+                                                </div>
+                                                <!---closing flex parent---->
+                                            </div>
+                                        </div>
+                                        <!---close last grid column---->
+                                    </div>
+                                    <!---closing three column grid---->
+                                </div>
+                                <!---closing overall layout container of the drop down menus--->
+                            </div>
+                            <!---closing the class, 'c-header__big-nav-drop-down'--->
+                        </li>
+                        <!---end of my account big nav drop down menu---->
+                    </ul>
                 </div>
             </div>
-        </div>
-        <!--end of section headings, below is displayed when a hover or click event happens on  the account or menu headings-->
-        <!--this is a drop down menu displayed when you click on Myaccount-->
-        <div class="drop-down-my-account">
-            <div class="container">
-                <h2>Book an engineer, pay bills, join
-                    Rewards and more</h2>
-                <div class="stretch">
-                    <button class="green-button"><span class="fa fa-angle-right"><a href=""></a></span>Access your account</button>
+            <!--end of the big nav drop down menus for laptop to desktop-->
+            <!--this is a drop down menu displayed when you click on My-account for the mobile screen size-->
+            <div class="c-header__mobile-nav-drop-down-my-account">
+                <div class="l-container">
+                    <h2 class="c-header__mobile-nav-drop-down-my-account-title">Book an engineer, pay bills, join
+                        Rewards and more</h2>
+                    <!--- this is the flex parent of the button to make the button stretch the whole screen---->
+                    <div class="h-flex-children c-header__mobile-nav-drop-down-my-account-container-flex-item-properties">
+                        <!---flex item is the button---->
+                        <button class="c-button h-flex-item"><span class="fa fa-angle-right c-header__mobile-nav-drop-down-my-account-arrow-right"><a class="c-header__mobile-nav-drop-down-link" href=""></a></span>Access your account</button>
+                        <!--end of flex item--->
+                    </div>
+                    <!--end of flex parent---->
+                    <h3 class="c-header__mobile-nav-drop-down-my-account-list-title">Quick links</h3>
+                    <ul class="c-header__mobile-nav-drop-down-my-account-list">
+                        <li class="c-header__mobile-nav-drop-down-my-account-list-item"><span class="fa fa-angle-right c-header__mobile-nav-drop-down-my-account-list-arrow"></span>Submit a meter reading</li>
+                        <li class="c-header__mobile-nav-drop-down-my-account-list-item"><span class="fa fa-angle-right c-header__mobile-nav-drop-down-my-account-list-arrow"></span>Your bill</li>
+                        <li class="c-header__mobile-nav-drop-down-my-account-list-item"><span class="fa fa-angle-right c-header__mobile-nav-drop-down-my-account-list-arrow"></span>Compare my energy usage</li>
+                        <li class="c-header__mobile-nav-drop-down-my-account-list-item"><span class="fa fa-angle-right c-header__mobile-nav-drop-down-my-account-list-arrow"></span>Book an engineer</li>
+                        <li class="c-header__mobile-nav-drop-down-my-account-list-item"><span class="fa fa-angle-right c-header__mobile-nav-drop-down-my-account-list-arrow"></span>Rewards</li>
+                        <li class="c-header__mobile-nav-drop-down-my-account-list-item"><span class="fa fa-angle-right c-header__mobile-nav-drop-down-my-account-list-arrow"></span>Moving home</li>
+                        <li class="c-header__mobile-nav-drop-down-my-account-list-item"><span class="fa fa-angle-right c-header__mobile-nav-drop-down-my-account-list-arrow"></span>Refer a friend</li>
+                        <!---modifier here, please see css comments for the purpose of this modifier--->
+                        <li class="c-header__mobile-nav-drop-down-my-account-list-item c-header__mobile-nav-drop-down-my-account-list-item--padding-change"><span class="fa fa-angle-right c-header__mobile-nav-drop-down-my-account-list-arrow"></span>Keeping your account safe</li>
+                    </ul>
                 </div>
-                <ul class="quick-links"><span class="unordered-heading">Quick links</span>
-                    <li><span class="fa fa-angle-right list-arrow"></span>Submit a meter reading</li>
-                    <li><span class="fa fa-angle-right list-arrow"></span>Your bill</li>
-                    <li><span class="fa fa-angle-right list-arrow"></span>Compare my energy usage</li>
-                    <li><span class="fa fa-angle-right list-arrow"></span>Book an engineer</li>
-                    <li><span class="fa fa-angle-right list-arrow"></span>Rewards</li>
-                    <li><span class="fa fa-angle-right list-arrow"></span>Moving home</li>
-                    <li><span class="fa fa-angle-right list-arrow"></span>Refer a friend</li>
-                    <li><span class="fa fa-angle-right list-arrow"></span>Keeping your account safe</li>
-                </ul>
+                <!---end of the layout div---->
             </div>
-        </div>
+            <!---end of mobile my account drop down menu---->
+        </header>
     </section>
-    <!--end of drop down menu for myAccount--->
-    <!---new drop down menu for the menu div section --->
-    <div class="menu-drop-down">
-        <ul class="menu-drop-down-larger-font">
-            <li>Energy</li>
-            <li>Home Services</li>
-            <li>Smart Home</li>
-            <li>Check out our new app</li>
-            <li>Help & support</li>
+    <!--end of section for mini nav, mobile nav, big nav, with mobile nav and big screen nav drop downs--->
+    <!---this section below is still part of the header section (this is the mobile menu drop down menu) however, due to manipulating the header's height at toggle stage this section was overlapping the, 'my account' section because that was using the section header's height as well.  The solution was to take this out the document flow with position: absolute and display it with javascript on the click event--->
+    <div class="c-js-header__mobile-nav-drop-down-menu">
+        <!---flex parent--->
+        <ul class="c-js-header__mobile-nav-drop-down-menu-list h-flex-children">
+            <!---flex items--->
+            <li class="c-js-header__mobile-nav-drop-down-menu-list-item h-flex-item">Energy</li>
+            <li class="c-js-header__mobile-nav-drop-down-menu-list-item h-flex-item">Home Services</li>
+            <li class="c-js-header__mobile-nav-drop-down-menu-list-item h-flex-item">Smart Home</li>
+            <li class="c-js-header__mobile-nav-drop-down-menu-list-item h-flex-item">Check out our new app</li>
+            <li class="c-js-header__mobile-nav-drop-down-menu-list-item h-flex-item">Help & support</li>
+            <!---end of flex items---->
         </ul>
+        <!---end of flex parent---->
     </div>
-    <!---end of drop down menu and end of the section---->
+    <!---this concludes the end of the header section, with all drop down menus and functionality for all screen sizes---->
     <!--this is the covid warning section that encloses the two left and right icons with the paragraph warning initial message --->
-    <section class="covid-section">
-        <div class="container">
-            <summary class="covid-info">
-                <div class="icon-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" data-di-res-id="2034299d-8794cff7" data-di-rand="1605025428706" fill="currentColor" class="icon-left">
+    <!--this is allowing a click event to happen on the whole container, because it is important covid information---->
+    <section class="c-js-covid__warning-section">
+        <div class="l-container l-container__medium-screen l-container__big-screen">
+            <!--flex parent--->
+            <summary class="c-covid__info h-flex-children">
+                <!---flex item the left icon --->
+                <div class="c-covid__icon-container h-flex-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" data-di-res-id="2034299d-8794cff7" data-di-rand="1605025428706" fill="currentColor" class="c-covid__icon-left">
                         <g>
                             <path d="M15.95,1c-8.28,0-15,6.72-15,15c0,8.28,6.72,15,15,15c8.28,0,15-6.72,15-15C30.95,7.72,24.23,1,15.95,1z M17.44,25h-3 V14.85c0-0.31,0.07-0.54,0.2-0.66C14.77,14.07,14.99,14,15.3,14h2.14V25z M17.23,10.63c-0.27,0.26-0.7,0.39-1.29,0.39 c-0.59,0-1.02-0.13-1.28-0.39c-0.26-0.26-0.39-0.67-0.39-1.23c0-0.58,0.13-1,0.39-1.25c0.26-0.26,0.68-0.39,1.28-0.39 c0.59,0,1.02,0.13,1.29,0.39c0.27,0.26,0.4,0.68,0.4,1.25C17.63,9.96,17.5,10.37,17.23,10.63z"></path>
                         </g>
                     </svg>
                 </div>
-                <div class="column-paragraphs">
-                    <p>
+                <!---end of flex item left icon --->
+                <!--- The paragraph flex item --->
+                <div class="c-covid__paragraphs-container h-flex-item">
+                    <p class="c-covid__paragraphs">
                         Important information about Covid-19 and the transfer of Robin Hood Energy customers to British Gas
                     </p>
-                    <div class="toggle-par">
-                        <p>For the latest on our response to Covid-19 please take a look at <a class="covid-section-link-style" href="">our FAQs.</a> We’re updating them regularly.</p>
-                        <p>If you’re a Robin Hood Energy customer, please<a class="covid-section-link-style" href=""> read our latest update</a> or contact Robin Hood Energy
+                    <div class="c-covid__toggle-paragraphs-container">
+                        <p class="c-covid__paragraphs">For the latest on our response to Covid-19 please take a look at <a class="c-covid__link" href="">our FAQs.</a> We’re updating them regularly.</p>
+                        <p class="c-covid__paragraphs">If you’re a Robin Hood Energy customer, please<a class="c-covid__link" href=""> read our latest update</a> or contact Robin Hood Energy
                             directly.</p>
                     </div>
                 </div>
-                <div class="icon-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" data-di-res-id="c0eb5eae-48f265b1" data-di-rand="1605025428708" fill="currentColor" class="icon-right">
+                <!--- end of the flex item paragraph --->
+                <!--- right icon flex item --->
+                <!---modifier here, please see css comments for the purpose of this modifier--->
+                <div class="c-covid__icon-container h-flex-item c-covid__icon-container--flex-grow">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" data-di-res-id="c0eb5eae-48f265b1" data-di-rand="1605025428708" fill="currentColor" class="c-covid__icon-right">
                         <g>
                             <path d="M16 19.59 8 11.59 6.59 13.01 16 22.42 25.41 13.01 24 11.59 16 19.59z"></path>
                         </g>
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" data-di-res-id="aff15e06-2471e84b" data-di-rand="1607174341945" fill="currentColor" class="icon-right-on-click">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" data-di-res-id="aff15e06-2471e84b" data-di-rand="1607174341945" fill="currentColor" class="c-covid__icon-right-on-click">
                         <g transform="translate(0, 30)  scale(1, -1)">
                             <path d="M16 19.59 8 11.59 6.59 13.01 16 22.42 25.41 13.01 24 11.59 16 19.59z"></path>
                         </g>
                     </svg>
                 </div>
+                <!--- end of the flex right icon --->
             </summary>
+            <!--- end of the flex parent ---->
         </div>
     </section>
-    <!--end of initial warning message--->
-    <!--here will be the rest of the covid warning message if the user clicks-->
+    <!---this concludes the covid message warning section --->
     <!---This section encloses the main gas man image with an image decoration at the bottom followed by the offer with it ending on the 25th -->
-    <section class="home-img-and-text">
-        <div class="imageContainer">
-            <div class="bottom-decoration">
+    <!--- this section uses the grid so that the layout can be easily changed at relative screen sizes.  At smaller screen sizes the text under the hero image will be on another row, however when the screen size gets large enough for a laptop the text will change to a speech/card on the hero image itself----->
+    <section class="c-hero__with-grid">
+        <div class="c-hero__image-container">
+            <div class="c-hero__bottom-decoration">
             </div>
         </div>
-    </section>
-    <div class="container">
-        <div class="extraPadding">
-            <h2 class="gasSecondHeading">HomeCare offer.</h2>
-            <h1 class="gasFirstHeading"><span>One Month Free</span> on selected HomeCare products</h1>
-            <p class="promptMessage">Offer ends 25th November 2020. <span> 2</span>
+        <div class="c-hero__text-container">
+            <h2 class="c-hero__gas-second-heading">HomeCare offer ends 10th May, 2021.</h2>
+            <h1 class="c-hero__gas-first-heading">Get a <span class="c-hero__bold">Gift Card worth up to £50, or £75 for M&amp;S, B&amp;Q or John Lewis &amp; Partners</span> if you’re a British Gas energy customer when you buy selected HomeCare products</h1>
+            <p class="c-hero__prompt-message">Appointment availability remains reduced post-lockdown. See our <a class="c-hero__prompt-message-link" href="#">FAQs</a> for more details. Exclusions apply. <span class="c-hero__footnote"> 2</span>
             </p>
-            <button class="mobile-size"> <a href="" class="cta">Get HomeCare cover</a><span class="arrow-right"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" data-di-res-id="db23c2d7-62cd156b" data-di-rand="1605360718033" fill="currentColor" class="arrow-pointing-right">
+            <button class="c-button__mobile-size c-hero__grid-item"> <a href="" class="c-hero__cta">Get HomeCare cover</a><span class="c-hero__arrow-right"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" data-di-res-id="db23c2d7-62cd156b" data-di-rand="1605360718033" fill="currentColor" class="c-arrow-pointing-right">
                         <g>
                             <path d="M16.15 6.59 14.73 8.01 21.73 15.01 7.15 15.01 7.15 17.01 21.73 17.01 14.73 24.01 16.15 25.42 25.56 16.01 16.15 6.59z"></path>
                         </g>
                     </svg></span></button>
         </div>
-    </div>
-    <!---end of section because it has the container in it---->
+    </section>
+    <!---end of c-hero__with-grid---->
 </body>
 
 </html>
